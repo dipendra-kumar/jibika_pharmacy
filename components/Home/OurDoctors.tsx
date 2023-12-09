@@ -36,7 +36,7 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
         <p className=" text-black italic">{qualification}</p>
         <p>{designation}</p>
         {extraAttributes.map((attributes) => (
-          <p>{attributes}</p>
+          <p key={attributes}>{attributes}</p>
         ))}
       </div>
 
