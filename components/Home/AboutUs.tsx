@@ -16,11 +16,11 @@ const AboutUs = () => {
           About our Pharmacy
         </h2>
         <p className="text-lg lg:text-2xl text-center">
-          At Jibika Pharmacy and Health Clinic, we're dedicated to your
+          At Jibika Pharmacy and Health Clinic, we&apos;re dedicated to your
           well-being. Our experienced team provides personalized care, offering
           a wide range of medications, wellness products, and health services.
           We prioritize your health journey, focusing on education, prevention,
-          and holistic wellness. Your health is our priority, and we're
+          and holistic wellness. Your health is our priority, and we&apos;re
           committed to being your trusted partner on the path to better health.
         </p>
       </div>

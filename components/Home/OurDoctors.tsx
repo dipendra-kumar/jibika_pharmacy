@@ -40,7 +40,7 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
         ))}
       </div>
 
-      <p className="mt-2  text-gray-900 italic">"{testimonial}"</p>
+      <p className="mt-2  text-gray-900 italic">&quot;{testimonial}&quot;</p>
     </div>
   );
 };
@@ -80,6 +80,7 @@ const OurDoctors = () => {
         <div className="flex flex-wrap gap-10 items-center justify-center">
           {doctors.map((doctor) => (
             <DoctorProfileCard
+              key={doctor.name}
               avatar={doctor.avatar}
               name={doctor.name}
               qualification={doctor.qualification}
