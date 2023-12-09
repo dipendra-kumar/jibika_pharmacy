@@ -14,9 +14,9 @@ const Hero = () => {
     <section id="home">
       <div className=" flex justify-between items-center h-screen ">
         <div className="relative w-full h-full overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#062d71] to-transparent "></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#062d71] to-transparent  "></div>
           <h2
-            className={`${montserrat.className} absolute top-1/2 left-1/2 cursor-default transform -translate-x-1/2 -translate-y-1/2 text-center text-white text-4xl sm:text-6xl lg:text-8xl font-extrabold uppercase tracking-wider drop-shadow-[0 1.2px 1.2px rgba(0, 0, 0, 0.8)] duration-300   hover:tracking-widest hover:text-gray-300`}
+            className={`${montserrat.className} absolute top-1/2 left-1/2 cursor-default transform -translate-x-1/2 -translate-y-1/2 text-center text-white text-4xl sm:text-6xl lg:text-8xl font-extrabold uppercase tracking-wider drop-shadow-[0 1.2px 1.2px rgba(0, 0, 0, 0.8)] duration-300  hover:tracking-widest hover:text-gray-300`}
           >
             Your Local Neighbourhood Pharmacy
           </h2>
