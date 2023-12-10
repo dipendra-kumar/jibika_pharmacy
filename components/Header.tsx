@@ -69,14 +69,14 @@ const Header = () => {
     <div
       className={`z-50 w-full h-28 flex items-center justify-center cursor-default duration-500 ${
         isHeaderFixed
-          ? "fixed top-0 transition-all bg-white"
+          ? "fixed top-0 transition-all bg-white shadow-2xl"
           : "absolute lg:mt-10 mt-2"
       }`}
       id="nav_bar"
     >
       <div
         className={` relative w-[90%] h-24 flex items-center p-5 justify-end bg-white rounded-full ${
-          isHeaderFixed ? "shadow-none" : "shadow-2xl"
+          isHeaderFixed ? "shadow-none" : "shadow-xl"
         }`}
       >
         <Link

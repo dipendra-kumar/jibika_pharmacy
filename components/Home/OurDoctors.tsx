@@ -2,7 +2,14 @@ import React from "react";
 
 import { Dancing_Script } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
-import { DrAnilJoshi, DrArvindBhushal } from "@/assets";
+import {
+  DefaultDoctor,
+  DrAnilJoshi,
+  DrArvindBhushal,
+  DrChandan,
+  DrDipak,
+  MrHemant,
+} from "@/assets";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -10,7 +17,7 @@ const dancingScript = Dancing_Script({
 });
 
 interface DoctorProfile {
-  avatar: StaticImageData;
+  avatar?: StaticImageData;
   name: string;
   designation: string;
   qualification: string;
@@ -28,7 +35,11 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
 }) => {
   return (
     <div className="p-5 shadow-xl rounded-xl text-center text-gray-500 max-w-sm mb-10">
-      <Image className="w-32 h-32 rounded-full mx-auto" src={avatar} alt="" />
+      <Image
+        className="w-32 h-32 rounded-full mx-auto"
+        src={avatar ? avatar : DefaultDoctor}
+        alt=""
+      />
       <div className="text-sm mt-5">
         <p className="font-bold text-xl leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out">
           {name}
@@ -49,12 +60,36 @@ const OurDoctors = () => {
   const doctors = [
     {
       avatar: DrArvindBhushal,
-      name: "Dr. Arvind Bhushal",
+      name: "Dr. Arbind Bhusal",
       qualification: "MBBS, MD",
       designation: "Consultant Neuropsychiatrist ",
       extraAttributes: ["NMC No:7007"],
       testimonial:
         "As a Neuropsychiatrist, I strive to offer specialized care rooted in understanding and empathy. My aim is to create a safe space for patients, addressing their individual needs with tailored treatment plans. I am dedicated to supporting mental health and well-being, making a positive impact on each person's life.",
+    },
+    {
+      avatar: DrDipak,
+      name: "Dr. Dipak Paudel",
+      qualification: "MBBS, MD",
+      designation: "Consultant Endocrinologist ",
+      extraAttributes: ["NMC No:7311"],
+      testimonial: "...",
+    },
+
+    {
+      avatar: DrChandan,
+      name: "Dr. Chandan Baranwal",
+      qualification: "MBBS, FCPS(ENT-HNS)",
+      designation: "Consultant ENT-HNS ",
+      extraAttributes: ["NMC No:6903"],
+      testimonial: "...",
+    },
+    {
+      name: "Dr. Shree Ram Prashad Shah",
+      qualification: "MBBS, MD",
+      designation: "Consultant Pediaerician ",
+      extraAttributes: ["NMC No:10047"],
+      testimonial: "...",
     },
 
     {
@@ -66,10 +101,18 @@ const OurDoctors = () => {
       testimonial:
         "As a dedicated Pharmacist and Pharmacy Owner, I am committed to providing comprehensive healthcare solutions. My approach combines expertise and empathy to ensure each patient receives personalized care. It's my privilege to support and contribute to the well-being of those I serve.",
     },
+    {
+      avatar: MrHemant,
+      name: "Mr. Hemant Baduwal",
+      qualification: "...",
+      designation: "Management Chief",
+      extraAttributes: [""],
+      testimonial: "...",
+    },
   ];
   return (
     <section id="our_doctors">
-      <div>
+      <div className="p-5">
         <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10 ">
           <h2
             className={`${dancingScript.className} text-4xl lg:text-7xl font-bold capitalize mb-6 text-center duration-300 hover:tracking-wider cursor-default`}

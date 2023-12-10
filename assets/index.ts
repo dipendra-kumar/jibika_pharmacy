@@ -8,8 +8,12 @@ import EEGImg from "./eeg.jpeg";
 import pharmaImg from "./pharmaceutical-industry.jpg";
 import firstAidDressing from "./first-aid-dressing.jpg";
 import VaccinationImg from "./vaccinnation.jpg";
-import DrAnilJoshi from "./Dr_Anil_Joshi_Seikh.jpg";
+import DrAnilJoshi from "./main_hero_image.jpg";
+import DrDipak from "./Dr Dipak .png";
+import DrChandan from "./Dr Chandan Baranwal.png";
 import DrArvindBhushal from "./Dr_Arbind_Bhushal.jpg";
+import MrHemant from "./Mr Hemant Baduwal.jpg";
+import DefaultDoctor from "./doctor_default.jpg";
 export {
   PharmaLogo,
   main_section_img,
@@ -23,4 +27,8 @@ export {
   VaccinationImg,
   DrAnilJoshi,
   DrArvindBhushal,
+  DrChandan,
+  DrDipak,
+  MrHemant,
+  DefaultDoctor,
 };

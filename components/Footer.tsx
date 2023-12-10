@@ -1,7 +1,7 @@
 import { PharmaLogo } from "@/assets";
 import Image from "next/image";
 import React from "react";
-import { FaFacebook, FaTiktok, FaYoutube, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaYoutube, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-2 lg:space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/jibikapharmacy"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                 <FaFacebook className="text-blue-600 text-sm lg:text-lg hover:text-blue-800" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/jibika_pharmacy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 <FaInstagram className="text-indigo-600 text-sm lg:text-lg hover:text-indigo-800" />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@jibikapharmacy4965"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                 aria-label="TikTok"
                 className="border rounded-full p-1 lg:p-2"
               >
-                <FaTiktok className="text-gray-300 text-sm lg:text-lg hover:text-gray-500" />
+                <FaTwitter className="text-blue-500 text-sm lg:text-lg hover:text-blue-800" />
               </a>
             </div>
           </div>
