@@ -17,6 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <meta
+        name="google-site-verification"
+        content="Sl4FdDRb7PwUmSkfVwWoJIDu4zYOI7wuSvthwJoNjYU"
+      />
       <body className={`${inter.className} h-screen w-full bg-white`}>
         {children}
       </body>
