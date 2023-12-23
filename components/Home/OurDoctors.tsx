@@ -73,7 +73,8 @@ const OurDoctors = () => {
       qualification: "MBBS, MD",
       designation: "Consultant Endocrinologist ",
       extraAttributes: ["NMC No:7311"],
-      testimonial: "...",
+      testimonial:
+        "As an Endocrinologist, my passion lies in restoring hormonal balance and improving lives. I am committed to providing comprehensive care, utilizing the latest advancements in endocrinology to diagnose and manage a wide spectrum of hormonal disorders. My goal is to empower patients through education and personalized treatment strategies, ensuring their well-being and long-term health.",
     },
 
     {
@@ -82,14 +83,16 @@ const OurDoctors = () => {
       qualification: "MBBS, FCPS(ENT-HNS)",
       designation: "Consultant ENT-HNS ",
       extraAttributes: ["NMC No:6903"],
-      testimonial: "...",
+      testimonial:
+        "Being an ENT-HNS specialist, my focus is on delivering precise and compassionate care to address ear, nose, and throat ailments. With a blend of expertise and innovation, I strive to offer advanced solutions and surgical interventions when necessary. My aim is to enhance the quality of life for my patients, fostering better hearing, breathing, and overall wellness.",
     },
     {
       name: "Dr. Shree Ram Prashad Shah",
       qualification: "MBBS, MD",
       designation: "Consultant Pediaerician ",
       extraAttributes: ["NMC No:10047"],
-      testimonial: "...",
+      testimonial:
+        "As a Pediatrician, my dedication revolves around nurturing the health and development of children. I am committed to providing families with guidance, support, and medical expertise from infancy through adolescence. My passion lies in ensuring each child's growth, advocating for preventive care, and addressing any health concerns with compassion and expertise.",
     },
 
     {
@@ -104,10 +107,11 @@ const OurDoctors = () => {
     {
       avatar: MrHemant,
       name: "Mr. Hemant Baduwal",
-      qualification: "...",
+      qualification: "",
       designation: "Management Chief",
       extraAttributes: [""],
-      testimonial: "...",
+      testimonial:
+        "As the Management Chief, I'm dedicated to ensuring top-quality service, seamless operations, and customer-centric care at our pharmacy. My focus is on excellence, efficiency, and the well-being of our patrons.",
     },
   ];
   return (
