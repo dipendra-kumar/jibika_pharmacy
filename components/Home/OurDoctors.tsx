@@ -36,7 +36,7 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
   return (
     <div className="p-5 shadow-xl rounded-xl text-center text-gray-500 max-w-sm mb-10">
       <Image
-        className="w-32 h-32 rounded-full mx-auto"
+        className="w-32 h-32 rounded-full mx-auto object-cover"
         src={avatar ? avatar : DefaultDoctor}
         alt=""
       />
