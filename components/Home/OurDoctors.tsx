@@ -1,5 +1,7 @@
+'use client';
 import React from "react";
-
+import {motion } from 'framer-motion'
+import { useInView } from "react-intersection-observer";
 import { Dancing_Script } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import {
@@ -34,30 +36,64 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
   testimonial,
   extraAttributes,
 }) => {
-  return (
-    <div className="p-5 shadow-md border-t rounded-xl text-center text-gray-500 max-w-sm mb-10 h-full flex flex-col items-center justify-center md:min-h-[550px]">
-      <Image
-        className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
-        src={avatar ? avatar : DefaultDoctor}
-        alt=""
-      />
-      <div className="text-sm mt-5">
-        <p className="font-bold text-xl leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out">
-          {name}
-        </p>
-        <p className=" text-black italic">{qualification}</p>
-        <p>{designation}</p>
-        {extraAttributes.map((attributes) => (
-          <p key={attributes}>{attributes}</p>
-        ))}
-      </div>
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Trigger animation only once
+    threshold: 0.5, // Trigger animation when 50% of the element is in view
+  });
 
-      <p className="mt-2  text-gray-900 italic">&quot;{testimonial}&quot;</p>
-    </div>
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: -20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+      className="shadow-md border rounded-xl text-gray-800 max-w-sm mb-10 relative overflow-hidden md:min-h-[450px] md:max-h-[450px]"
+    >
+      {/* Profile Image */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="relative h-60 mb-2"
+      >
+        <Image
+          className="object-cover w-full h-full"
+          src={avatar ? avatar : DefaultDoctor}
+          alt={name}
+        />
+        {/* Details Overlay */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 0.8 } : {}}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-20 text-white p-4"
+        >
+          <div className="text-xl font-bold mb-1">{name}</div>
+          <div className="text-sm">{designation}</div>
+          <div className="text-sm">{qualification}</div>
+          <div className="text-sm">{extraAttributes}</div>
+        </motion.div>
+      </motion.div>
+      {/* Testimonial */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="text-sm text-gray-700 italic px-5 py-2 text-justify"
+      >
+        {testimonial}
+      </motion.div>
+    </motion.div>
   );
 };
 
+
 const OurDoctors = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
   const doctors = [
     {
       avatar: DrArvindBhushal,
@@ -129,11 +165,15 @@ const OurDoctors = () => {
     <section id="our_doctors">
       <div className="p-5">
         <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10 ">
-          <h2
+          <motion.h2
+               ref={ref}
+               initial={{ opacity: 0, y: 20 }}
+               animate={inView ? { opacity: 1, y: 0 } : {}}
+               transition={{ duration: 0.5 }}
             className={`${dancingScript.className} text-4xl lg:text-7xl font-bold capitalize mb-6 text-center duration-300 hover:tracking-wider cursor-default`}
           >
             Our Doctors
-          </h2>
+          </motion.h2>
         </div>
         <div className="flex flex-wrap gap-10 items-center justify-center">
           {doctors.map((doctor) => (

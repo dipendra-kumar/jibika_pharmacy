@@ -1,9 +1,9 @@
-"use client";
-
+'use client'
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { PharmaLogo } from "@/assets";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const HeaderLink = ({
   linkTo,
@@ -12,7 +12,9 @@ const HeaderLink = ({
   linkTo: string;
   linkTitle: string;
 }) => {
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
     e.preventDefault();
 
     const href = e.currentTarget.href;
@@ -65,12 +67,16 @@ const Header = () => {
       behavior: "smooth",
     });
   };
+
   return (
-    <div
-      className={`z-50 w-full h-28 flex items-center justify-center cursor-default duration-500 ${
+    <motion.div
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "linear", delay: 0.2 }}
+      className={`fixed  z-50 w-full h-28 flex items-center justify-center cursor-default duration-500 ${
         isHeaderFixed
-          ? "fixed top-0 transition-all bg-white shadow-2xl"
-          : "absolute lg:mt-10 mt-2"
+          ? "top-0 transition-all bg-white shadow-2xl"
+          : "x "
       }`}
       id="nav_bar"
     >
@@ -111,7 +117,7 @@ const Header = () => {
           <HeaderLink linkTitle="Our Doctors" linkTo="#our_doctors" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
