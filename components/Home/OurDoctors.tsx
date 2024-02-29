@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import {
   DefaultDoctor,
   DrAnilJoshi,
+  DrArunSigdel,
   DrArvindBhushal,
   DrChandan,
   DrDipak,
@@ -34,7 +35,7 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
   extraAttributes,
 }) => {
   return (
-    <div className="p-5 shadow-xl rounded-xl text-center text-gray-500 max-w-sm mb-10">
+    <div className="p-5 shadow-md border-t rounded-xl text-center text-gray-500 max-w-sm mb-10 h-full flex flex-col items-center justify-center md:min-h-[550px]">
       <Image
         className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
         src={avatar ? avatar : DefaultDoctor}
@@ -87,6 +88,15 @@ const OurDoctors = () => {
         "Being an ENT-HNS specialist, my focus is on delivering precise and compassionate care to address ear, nose, and throat ailments. With a blend of expertise and innovation, I strive to offer advanced solutions and surgical interventions when necessary. My aim is to enhance the quality of life for my patients, fostering better hearing, breathing, and overall wellness.",
     },
     {
+      avatar: DrArunSigdel,
+      name: "Dr. Arun Sigdel",
+      qualification: "MBBS (K.U), MS, Orthopedic (TUTH, IOM) ",
+      designation: "Consultant Orthopedic ",
+      extraAttributes: [""],
+      testimonial:
+"As an orthopedic specialist, I'm dedicated to restoring mobility and enhancing quality of life for my patients. With a focus on cutting-edge treatments and compassionate care, I strive to empower individuals on their journey to optimal musculoskeletal health."
+    },
+    {
       name: "Dr. Shree Ram Prashad Shah",
       qualification: "MBBS, MD",
       designation: "Consultant Pediaerician ",
@@ -94,6 +104,7 @@ const OurDoctors = () => {
       testimonial:
         "As a Pediatrician, my dedication revolves around nurturing the health and development of children. I am committed to providing families with guidance, support, and medical expertise from infancy through adolescence. My passion lies in ensuring each child's growth, advocating for preventive care, and addressing any health concerns with compassion and expertise.",
     },
+
 
     {
       avatar: DrAnilJoshi,

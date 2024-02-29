@@ -13,6 +13,7 @@ import DrDipak from "./Dr Dipak .png";
 import DrChandan from "./Dr Chandan Baranwal.png";
 import DrArvindBhushal from "./Dr_Arbind_Bhushal.jpg";
 import MrHemant from "./Mr Hemant Baduwal.jpg";
+import DrArunSigdel from "./Dr Arun Sigdel.jpg";
 import DefaultDoctor from "./doctor_default.jpg";
 export {
   PharmaLogo,
@@ -30,5 +31,6 @@ export {
   DrChandan,
   DrDipak,
   MrHemant,
+  DrArunSigdel,
   DefaultDoctor,
 };
