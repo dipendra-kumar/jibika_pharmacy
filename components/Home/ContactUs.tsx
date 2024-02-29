@@ -20,7 +20,7 @@ export default function ContactUs() {
       const { name, email, message } = data;
 
       const payload = {
-        apikey: "84343554-abac-404a-92ba-43ca0aeab571",
+        apikey: process.env.WEB3_FORMS_KEY,
         name,
         email,
         message,
