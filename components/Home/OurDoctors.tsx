@@ -10,6 +10,7 @@ import {
   DrArvindBhushal,
   DrChandan,
   DrDipak,
+  DrShreeRamShah,
   MrHemant,
 } from "@/assets";
 import { SectionWrapper } from "@/hoc";
@@ -41,7 +42,7 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
 }) => {
   return (
     <motion.div
-      variants={fadeIn("up", "spring", index * 0.2, 0.75)}
+      variants={fadeIn("up", "spring", index * 0.5, 1)}
       className="shadow-md border rounded-xl bg-white max-w-sm  relative overflow-hidden md:min-h-[450px] md:max-h-[450px]"
     >
       {/* Profile Image */}
@@ -60,7 +61,7 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
         </div>
       </div>
       {/* Testimonial */}
-      <div className="text-sm text-black italic px-5 py-2 text-justify">
+      <div className="text-sm text-black italic px-5 py-2 text-center">
         {testimonial}
       </div>
     </motion.div>
@@ -101,12 +102,13 @@ const OurDoctors = () => {
       avatar: DrArunSigdel,
       name: "Dr. Arun Sigdel",
       qualification: "MBBS (K.U), MS, Orthopedic (TUTH, IOM) ",
-      designation: "Consultant Orthopedic ",
-      extraAttributes: [""],
+      designation: "Asst. professor Civil Service Hospital, Kathmandu  ",
+      extraAttributes: ["NMC No:6920"],
       testimonial:
         "As an orthopedic specialist, I'm dedicated to restoring mobility and enhancing quality of life for my patients. With a focus on cutting-edge treatments and compassionate care, I strive to empower individuals on their journey to optimal musculoskeletal health.",
     },
     {
+      avatar: DrShreeRamShah,
       name: "Dr. Shree Ram Prashad Shah",
       qualification: "MBBS, MD",
       designation: "Consultant Pediaerician ",

@@ -5,6 +5,8 @@ import axios from "axios";
 import { SectionWrapper } from "@/hoc";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
+import { config } from "dotenv";
+config();
 
 const ContactUs = () => {
   const {
@@ -20,13 +22,14 @@ const ContactUs = () => {
   const onSubmit = async (data: any) => {
     try {
       const API_ENDPOINT = "https://api.web3forms.com/submit";
-      const { name, email, message } = data;
+      const { name, email, phone, query } = data;
 
       const payload = {
-        apikey: process.env.WEB3_FORMS_KEY,
+        apikey: process.env.NEXT_PUBLIC_WEB3_FORMS_KEY,
         name,
         email,
-        message,
+        phone,
+        query,
       };
       const options = {
         method: "POST",
@@ -55,32 +58,28 @@ const ContactUs = () => {
     <>
       <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4 pt-10 lg:px-40 bg-green-700  md:h-96">
         <motion.div variants={textVariant()} className="mx-auto mb-10 md:mt-20">
-          <h1 className="text-4xl font-bold mt-4 dark:text-gray-50 text-gray-700">
+          <h1 className="text-4xl font-bold mt-4 text-gray-50">
             Want to schedule an appointment with us?
           </h1>
-          <p className="text-sm text-gray-700 mt-4 font-light dark:text-gray-200">
+          <p className="text-sm mt-4 font-light text-gray-200">
             Fill the form and send in your queries. We will respond as soon as
             possible. Alternatively, You can reach out to us at our email
             address and phone number.
           </p>
         </motion.div>
         <motion.form
-          variants={slideIn("down", "tween", 0.05, 0.75)}
+          variants={slideIn("down", "tween", 0.5, 1)}
           onSubmit={handleSubmit(onSubmit)}
-          className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-white dark:bg-blue-900"
+          className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-blue-900"
         >
-          <h1 className="text-2xl font-bold dark:text-gray-50">
-            Send a message
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-50">Send a message</h1>
 
-          <label
-            htmlFor="name"
-            className="text-white font-light mt-8 dark:text-gray-50"
-          >
-            Full name<span className="text-red-500 dark:text-gray-50">*</span>
+          <label htmlFor="name" className=" font-light mt-8 text-gray-50">
+            Full name<span className="text-red-500">*</span>
           </label>
           <input
             type="text"
+            placeholder="Enter your full name."
             {...register("name", { required: true })}
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
           />
@@ -96,6 +95,7 @@ const ContactUs = () => {
           </label>
           <input
             type="email"
+            placeholder="Enter your email address."
             {...register("email", { required: true })}
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
           />
@@ -107,29 +107,38 @@ const ContactUs = () => {
             htmlFor="subject"
             className="text-white font-light mt-4 dark:text-gray-50"
           >
-            Subject<span className="text-red-500">*</span>
+            Your query<span className="text-red-500">*</span>
           </label>
           <input
             type="text"
-            {...register("subject", { required: true })}
+            placeholder="What do you want to talk about?"
+            {...register("query", { required: true })}
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
           />
-          {errors?.subject && (
-            <p className="text-red-500">Subject cannot be empty.</p>
+          {errors?.query && (
+            <p className="text-red-500">
+              {" "}
+              Please specify the topic you want to talk about.
+            </p>
           )}
           <label
-            htmlFor="message"
+            htmlFor="phone"
             className="text-gray-500 font-light mt-4 dark:text-gray-50"
           >
-            Message<span className="text-red-500">*</span>
+            Phone Number<span className="text-red-500">*</span>
           </label>
-          <textarea
-            {...register("message", { required: true })}
+          <input
+            type="number"
+            placeholder="Provide us your phone number."
+            {...register("phone", {
+              required: true,
+            })}
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
-          ></textarea>
-          {errors?.message && (
-            <p className="text-red-500">Message body cannot be empty.</p>
+          />
+          {errors?.phone && (
+            <p className="text-red-500">Phone number is required!</p>
           )}
+
           <div className="flex flex-row items-center justify-start">
             <button
               type="submit"

@@ -1,7 +1,13 @@
 import { PharmaLogo } from "@/assets";
 import Image from "next/image";
 import React from "react";
-import { FaFacebook, FaYoutube, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaYoutube,
+  FaInstagram,
+  FaTwitter,
+  FaTiktok,
+} from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
@@ -68,13 +74,22 @@ const Footer: React.FC = () => {
                 <FaYoutube className="text-red-600 text-sm lg:text-lg hover:text-red-800" />
               </a>
               <a
-                href="#"
+                href="https://x.com/jibikapharmacy?s=11&t=dVEtJqFDZoxFRgsrUGFZqQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                className="border rounded-full p-1 lg:p-2"
+              >
+                <FaTwitter className="text-blue-500 text-sm lg:text-lg hover:text-blue-800" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@jibikapharmacy1?_t=8kIra4T1Gzv&_r=1"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TikTok"
                 className="border rounded-full p-1 lg:p-2"
               >
-                <FaTwitter className="text-blue-500 text-sm lg:text-lg hover:text-blue-800" />
+                <FaTiktok className="text-gray-500 text-sm lg:text-lg hover:text-gray-50" />
               </a>
             </div>
           </div>

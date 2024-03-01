@@ -97,7 +97,7 @@ const Header = () => {
           </div>
           <div className="flex flex-col items-center justify-center">
             <h1
-              className={`text-2xl md:text-3xl text-[#062d71] tracking-widest font-extrabold text-center md:text-left drop-shadow-2xl`}
+              className={`text-2xl md:text-3xl text-[#062d71] tracking-normal md:tracking-wider font-extrabold text-center md:text-left drop-shadow-2xl`}
             >
               Jibika Pharmacy <br />
             </h1>
