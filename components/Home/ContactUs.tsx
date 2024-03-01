@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { SectionWrapper } from "@/hoc";
 import { motion } from "framer-motion";
-import { slideIn, textVariant } from "@/utils/motion";
+import { fadeIn, textVariant } from "@/utils/motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { config } from "dotenv";
@@ -89,7 +89,7 @@ const ContactUs = () => {
           </p>
         </motion.div>
         <motion.form
-          variants={slideIn("down", "tween", 0.5, 1)}
+          variants={fadeIn("left", "spring", 0.5, 1)}
           onSubmit={handleSubmit(onSubmit)}
           className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-blue-900"
         >
@@ -166,6 +166,7 @@ const ContactUs = () => {
           >
             Date and Time<span className="text-red-500">*</span>
           </label>
+
           <DatePicker
             selected={selectedDate}
             onChange={handleDateChange}
@@ -175,12 +176,13 @@ const ContactUs = () => {
             timeCaption="Time"
             dateFormat="MMMM d, yyyy h:mm aa"
             placeholderText="Select date and time"
-            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
+            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white pointer-events-auto z-0"
             minDate={new Date(new Date().setDate(new Date().getDate() + 1))}
             minTime={minTime}
             maxTime={maxTime}
             disabledKeyboardNavigation
           />
+
           {(selectedDate === null || selectedDate < new Date()) && (
             <p className="text-red-500">
               {selectedDate === null

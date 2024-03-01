@@ -16,10 +16,12 @@ const Hero = () => {
   return (
     <div className="flex justify-between h-screen">
       <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#062d71] to-transparent -z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#062d71] to-transparent z-0"></div>
+
+        {/* Heading */}
         <motion.h2
           variants={fadeIn("right", "tween", 0.1, 0.5)}
-          className={`${montserrat.className} text-center text-white text-4xl sm:text-6xl lg:text-8xl font-extrabold uppercase tracking-wider`}
+          className={`${montserrat.className} text-center text-white text-4xl sm:text-6xl lg:text-8xl font-extrabold uppercase tracking-wider relative z-10`}
         >
           Your Local Neighbourhood Pharmacy
         </motion.h2>
