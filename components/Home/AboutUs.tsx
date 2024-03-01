@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
 import { FaHeart, FaUserMd, FaHandHoldingMedical } from "react-icons/fa";
@@ -14,13 +14,13 @@ interface CardProps {
   icon: React.ReactNode;
   color: string;
   title: string;
-  animation: Variants;
+  index: number;
 }
 
-const Card: React.FC<CardProps> = ({ icon, color, title, animation }) => {
+const Card: React.FC<CardProps> = ({ icon, color, title, index }) => {
   return (
     <motion.div
-      variants={animation}
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
       className={`flex flex-col items-center justify-center rounded-lg p-6 text-white`}
       style={{ backgroundColor: color }}
     >
@@ -57,14 +57,14 @@ const AboutUs = () => {
           icon={<FaHeart className="text-4xl mb-2 animate-pulse" />}
           color="red"
           title="Personalized Care"
-          animation={fadeIn("right", "spring", 1 * 0.3, 0.75)}
+          index={0}
         />
 
         <Card
           icon={<FaUserMd className="text-4xl mb-2" />}
           color="blue"
           title="Experienced Team"
-          animation={fadeIn("up", "spring", 1 * 0.3, 0.75)}
+          index={1}
         />
 
         <Card
@@ -73,7 +73,7 @@ const AboutUs = () => {
           }
           color="green"
           title="Holistic Wellness"
-          animation={fadeIn("left", "spring", 1 * 0.3, 0.75)}
+          index={2}
         />
       </div>
     </div>
