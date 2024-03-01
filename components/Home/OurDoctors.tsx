@@ -121,7 +121,7 @@ const OurDoctors = () => {
       avatar: DrAnilJoshi,
       name: "Mr. Anil Kumar Joshi",
       qualification: "BMLT, DPharma",
-      designation: "Pharmacist ",
+      designation: "Asst. Pharmacist",
       extraAttributes: ["NPC No: A-9339"],
       testimonial:
         "As a dedicated Pharmacist and Pharmacy Owner, I am committed to providing comprehensive healthcare solutions. My approach combines expertise and empathy to ensure each patient receives personalized care. It's my privilege to support and contribute to the well-being of those I serve.",

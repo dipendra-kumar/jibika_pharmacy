@@ -5,6 +5,8 @@ import axios from "axios";
 import { SectionWrapper } from "@/hoc";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { config } from "dotenv";
 config();
 
@@ -18,6 +20,7 @@ const ContactUs = () => {
   const [buttonText, setButtonText] = useState("Send");
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailureMessage, setShowFailureMessage] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const onSubmit = async (data: any) => {
     try {
@@ -30,6 +33,12 @@ const ContactUs = () => {
         email,
         phone,
         query,
+        date: selectedDate.toDateString(),
+        time: selectedDate.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        }),
       };
       const options = {
         method: "POST",
@@ -52,6 +61,9 @@ const ContactUs = () => {
       setButtonText("Send");
       setShowFailureMessage(true);
     }
+  };
+  const handleDateChange = (date: any) => {
+    setSelectedDate(date);
   };
 
   return (
@@ -139,6 +151,31 @@ const ContactUs = () => {
             <p className="text-red-500">Phone number is required!</p>
           )}
 
+          <label
+            htmlFor="date"
+            className="text-white font-light mt-4 dark:text-gray-50"
+          >
+            Date and Time<span className="text-red-500">*</span>
+          </label>
+          <DatePicker
+            selected={selectedDate}
+            onChange={handleDateChange}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            timeCaption="Time"
+            dateFormat="MMMM d, yyyy h:mm aa"
+            placeholderText="Select date and time"
+            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
+            minDate={new Date()}
+          />
+          {(selectedDate === null || selectedDate < new Date()) && (
+            <p className="text-red-500">
+              {selectedDate === null
+                ? "Please select a date and time."
+                : "Please select a date and time after today."}
+            </p>
+          )}
           <div className="flex flex-row items-center justify-start">
             <button
               type="submit"
@@ -150,7 +187,8 @@ const ContactUs = () => {
           <div className="text-left">
             {showSuccessMessage && (
               <p className="text-green-500 font-semibold text-sm my-2">
-                Thankyou! Your Message has been delivered.
+                Thankyou! Your Message has been delivered. We will call you back
+                regarding your issue.
               </p>
             )}
             {showFailureMessage && (
