@@ -89,7 +89,7 @@ const ContactUs = () => {
           </p>
         </motion.div>
         <motion.form
-          variants={fadeIn("left", "spring", 0.5, 1)}
+          variants={fadeIn("up", "spring", 0.5, 1)}
           onSubmit={handleSubmit(onSubmit)}
           className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-blue-900"
         >

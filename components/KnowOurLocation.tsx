@@ -11,7 +11,7 @@ const KnowOurLocation = () => {
     <div className=" min-h-[60%] w-full">
       <div className="p-8 flex flex-col-reverse md:grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 lg:px-20">
         <motion.div
-          variants={fadeIn("right", "spring", 0.5, 1)}
+          variants={fadeIn("down", "spring", 0.5, 1)}
           className="max-w-full overflow-hidden rounded-lg shadow-lg"
         >
           <div id="my-map-display" className="h-96">

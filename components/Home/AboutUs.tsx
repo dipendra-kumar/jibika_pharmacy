@@ -5,8 +5,6 @@ import { fadeIn, textVariant } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
 import { FaHeart, FaUserMd, FaHandHoldingMedical } from "react-icons/fa";
 import { Dancing_Script } from "next/font/google";
-import { AboutBg } from "@/assets";
-import Image from "next/image";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],

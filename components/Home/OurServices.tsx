@@ -12,7 +12,7 @@ import {
   pharmaImg,
   xRayImg,
 } from "@/assets";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -34,10 +34,12 @@ const ServiceCard: React.FC<Service> = ({
   description,
   icon,
 }) => {
+  const controls = useAnimation();
+
   return (
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 1)}
-      className="block rounded-lg max-h-[26rem] bg-white border text-black"
+      className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-black"
     >
       <div className="relative overflow-hidden h-52">
         <img
@@ -109,14 +111,14 @@ const OurServices = () => {
 
   return (
     <section id="our_services">
-      <div className="w-full flex flex-col items-center justify-center px-20 py-5 ">
+      <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10">
         <motion.h2
           variants={textVariant()}
           className={`${dancingScript.className} text-4xl lg:text-7xl font-bold capitalize text-center duration-300 hover:tracking-wider cursor-default`}
         >
           Explore Our Services
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:grid-cols-4 items-center justify-center mt-6 p-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:grid-cols-4 items-center justify-center mt-6">
           {serviceData.map((service, index) => (
             <ServiceCard
               index={index}
