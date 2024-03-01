@@ -70,8 +70,8 @@ const Header = () => {
     <motion.div
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "linear", delay: 0.2 }}
-      className={`fixed  z-50 w-full h-28 flex items-center justify-center cursor-default duration-500 ${
+      transition={{ duration: 0.01, ease: "linear", delay: 0 }}
+      className={`fixed  z-50 w-full h-28 flex items-center justify-center cursor-default duration-500  ${
         isHeaderFixed ? "top-0 transition-all bg-white shadow-2xl" : "x "
       }`}
       id="nav_bar"

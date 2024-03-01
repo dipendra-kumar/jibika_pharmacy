@@ -1,7 +1,6 @@
-'use client';
+"use client";
 import React from "react";
-import {motion } from 'framer-motion'
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import { Dancing_Script } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import {
@@ -13,6 +12,8 @@ import {
   DrDipak,
   MrHemant,
 } from "@/assets";
+import { SectionWrapper } from "@/hoc";
+import { fadeIn, textVariant } from "@/utils/motion";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -20,6 +21,7 @@ const dancingScript = Dancing_Script({
 });
 
 interface DoctorProfile {
+  index: number;
   avatar?: StaticImageData;
   name: string;
   designation: string;
@@ -29,6 +31,7 @@ interface DoctorProfile {
 }
 
 const DoctorProfileCard: React.FC<DoctorProfile> = ({
+  index,
   avatar,
   name,
   designation,
@@ -36,64 +39,35 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
   testimonial,
   extraAttributes,
 }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Trigger animation only once
-    threshold: 0.5, // Trigger animation when 50% of the element is in view
-  });
-
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: -20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      className="shadow-md border rounded-xl text-gray-800 max-w-sm mb-10 relative overflow-hidden md:min-h-[450px] md:max-h-[450px]"
+      variants={fadeIn("up", "spring", index * 0.2, 0.75)}
+      className="shadow-md border rounded-xl bg-white max-w-sm  relative overflow-hidden md:min-h-[450px] md:max-h-[450px]"
     >
       {/* Profile Image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="relative h-60 mb-2"
-      >
+      <div className="relative h-60 mb-2">
         <Image
           className="object-cover w-full h-full"
           src={avatar ? avatar : DefaultDoctor}
           alt={name}
         />
         {/* Details Overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 0.8 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-20 text-white p-4"
-        >
+        <div className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-20 text-white p-4">
           <div className="text-xl font-bold mb-1">{name}</div>
           <div className="text-sm">{designation}</div>
           <div className="text-sm">{qualification}</div>
           <div className="text-sm">{extraAttributes}</div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
       {/* Testimonial */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.6 }}
-        className="text-sm text-gray-700 italic px-5 py-2 text-justify"
-      >
+      <div className="text-sm text-black italic px-5 py-2 text-justify">
         {testimonial}
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
 
-
 const OurDoctors = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-
   const doctors = [
     {
       avatar: DrArvindBhushal,
@@ -130,7 +104,7 @@ const OurDoctors = () => {
       designation: "Consultant Orthopedic ",
       extraAttributes: [""],
       testimonial:
-"As an orthopedic specialist, I'm dedicated to restoring mobility and enhancing quality of life for my patients. With a focus on cutting-edge treatments and compassionate care, I strive to empower individuals on their journey to optimal musculoskeletal health."
+        "As an orthopedic specialist, I'm dedicated to restoring mobility and enhancing quality of life for my patients. With a focus on cutting-edge treatments and compassionate care, I strive to empower individuals on their journey to optimal musculoskeletal health.",
     },
     {
       name: "Dr. Shree Ram Prashad Shah",
@@ -140,7 +114,6 @@ const OurDoctors = () => {
       testimonial:
         "As a Pediatrician, my dedication revolves around nurturing the health and development of children. I am committed to providing families with guidance, support, and medical expertise from infancy through adolescence. My passion lies in ensuring each child's growth, advocating for preventive care, and addressing any health concerns with compassion and expertise.",
     },
-
 
     {
       avatar: DrAnilJoshi,
@@ -162,35 +135,31 @@ const OurDoctors = () => {
     },
   ];
   return (
-    <section id="our_doctors">
-      <div className="p-5">
-        <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10 ">
-          <motion.h2
-               ref={ref}
-               initial={{ opacity: 0, y: 20 }}
-               animate={inView ? { opacity: 1, y: 0 } : {}}
-               transition={{ duration: 0.5 }}
-            className={`${dancingScript.className} text-4xl lg:text-7xl font-bold capitalize mb-6 text-center duration-300 hover:tracking-wider cursor-default`}
-          >
-            Our Doctors
-          </motion.h2>
-        </div>
-        <div className="flex flex-wrap gap-10 items-center justify-center">
-          {doctors.map((doctor) => (
-            <DoctorProfileCard
-              key={doctor.name}
-              avatar={doctor.avatar}
-              name={doctor.name}
-              qualification={doctor.qualification}
-              designation={doctor.designation}
-              testimonial={doctor.testimonial}
-              extraAttributes={doctor.extraAttributes}
-            />
-          ))}
-        </div>
+    <div className="p-5">
+      <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10 ">
+        <motion.h2
+          variants={textVariant()}
+          className={`${dancingScript.className} text-4xl lg:text-7xl font-bold capitalize text-center duration-300 hover:tracking-wider cursor-default`}
+        >
+          Meet Our Team
+        </motion.h2>
       </div>
-    </section>
+      <div className="flex flex-wrap gap-10 items-center justify-center">
+        {doctors.map((doctor, index) => (
+          <DoctorProfileCard
+            index={index}
+            key={doctor.name}
+            avatar={doctor.avatar}
+            name={doctor.name}
+            qualification={doctor.qualification}
+            designation={doctor.designation}
+            testimonial={doctor.testimonial}
+            extraAttributes={doctor.extraAttributes}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default OurDoctors;
+export default SectionWrapper(OurDoctors, "our_doctors");

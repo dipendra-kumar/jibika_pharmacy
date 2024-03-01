@@ -15,6 +15,8 @@ import DrArvindBhushal from "./Dr_Arbind_Bhushal.jpg";
 import MrHemant from "./Mr Hemant Baduwal.jpg";
 import DrArunSigdel from "./Dr Arun Sigdel.jpg";
 import DefaultDoctor from "./doctor_default.jpg";
+import AboutBg from "./about_bg.svg";
+import MeetOurTeam from "./meet_our_team.svg";
 export {
   PharmaLogo,
   main_section_img,
@@ -33,4 +35,6 @@ export {
   MrHemant,
   DrArunSigdel,
   DefaultDoctor,
+  AboutBg,
+  MeetOurTeam,
 };
