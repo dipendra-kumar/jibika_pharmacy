@@ -179,6 +179,7 @@ const ContactUs = () => {
             minDate={new Date(new Date().setDate(new Date().getDate() + 1))}
             minTime={minTime}
             maxTime={maxTime}
+            disabledKeyboardNavigation
           />
           {(selectedDate === null || selectedDate < new Date()) && (
             <p className="text-red-500">
