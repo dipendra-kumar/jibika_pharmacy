@@ -20,7 +20,11 @@ const ContactUs = () => {
   const [buttonText, setButtonText] = useState("Send");
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailureMessage, setShowFailureMessage] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(() => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow;
+  });
 
   const onSubmit = async (data: any) => {
     try {
@@ -167,7 +171,7 @@ const ContactUs = () => {
             dateFormat="MMMM d, yyyy h:mm aa"
             placeholderText="Select date and time"
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
-            minDate={new Date()}
+            minDate={new Date(new Date().setDate(new Date().getDate() + 1))}
           />
           {(selectedDate === null || selectedDate < new Date()) && (
             <p className="text-red-500">
