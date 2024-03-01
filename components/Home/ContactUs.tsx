@@ -69,6 +69,11 @@ const ContactUs = () => {
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
   };
+  const minTime = new Date();
+  minTime.setHours(9, 0); // Set minimum time to 9:00 AM
+
+  const maxTime = new Date();
+  maxTime.setHours(17, 0); // Set maximum time to 5:00 PM
 
   return (
     <>
@@ -165,13 +170,15 @@ const ContactUs = () => {
             selected={selectedDate}
             onChange={handleDateChange}
             showTimeSelect
-            timeFormat="HH:mm"
-            timeIntervals={15}
+            timeFormat="hh:mm aa"
+            timeIntervals={60}
             timeCaption="Time"
             dateFormat="MMMM d, yyyy h:mm aa"
             placeholderText="Select date and time"
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
             minDate={new Date(new Date().setDate(new Date().getDate() + 1))}
+            minTime={minTime}
+            maxTime={maxTime}
           />
           {(selectedDate === null || selectedDate < new Date()) && (
             <p className="text-red-500">
