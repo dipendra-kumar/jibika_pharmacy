@@ -15,6 +15,7 @@ import {
 } from "@/assets";
 import { SectionWrapper } from "@/hoc";
 import { fadeIn, textVariant } from "@/utils/motion";
+import HeadTitle from "../HeadTitle";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -137,16 +138,11 @@ const OurDoctors = () => {
     },
   ];
   return (
-    <div className="p-5">
-      <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10 ">
-        <motion.h2
-          variants={textVariant()}
-          className={`${dancingScript.className} text-4xl lg:text-7xl font-bold capitalize text-center duration-300 hover:tracking-wider cursor-default`}
-        >
-          Meet Our Team
-        </motion.h2>
+    <div className="px-10 my-20">
+      <div className="w-full flex flex-col items-center justify-center p-5 lg:px-10 ">
+        <HeadTitle title="Meet our Team" />
       </div>
-      <div className="flex flex-wrap gap-10 items-center justify-center">
+      <div className="flex flex-wrap gap-10 items-center justify-center ">
         {doctors.map((doctor, index) => (
           <DoctorProfileCard
             index={index}

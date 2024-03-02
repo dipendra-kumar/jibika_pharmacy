@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
 import { config } from "dotenv";
+import HeadTitle from "./HeadTitle";
 config();
 
 const KnowOurLocation = () => {

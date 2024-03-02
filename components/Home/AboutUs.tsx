@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
 import { FaHeart, FaUserMd, FaHandHoldingMedical } from "react-icons/fa";
-import { Dancing_Script } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 
-const dancingScript = Dancing_Script({
+const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -32,12 +32,12 @@ const Card: React.FC<CardProps> = ({ icon, color, title, index }) => {
 
 const AboutUs = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between p-5 lg:p-10 relative z-10">
+    <div className="w-full h-full flex flex-col items-center justify-between p-5 lg:p-10 relative z-10 my-20">
       <motion.h2
         variants={textVariant()}
-        className={`${dancingScript.className} text-black text-4xl lg:text-6xl font-bold capitalize mb-6 text-center duration-300 hover:tracking-wider cursor-default`}
+        className={`${nunitoSans.className} text-black text-4xl lg:text-6xl font-bold capitalize mb-6 text-center cursor-default`}
       >
-        Welcome to Jibika Pharmacy & Health Clinic
+        Jibika Pharmacy & Health Clinic
       </motion.h2>
       <div className="w-full md:w-3/4 max-w-4xl ">
         <motion.p
@@ -55,14 +55,14 @@ const AboutUs = () => {
       <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card
           icon={<FaHeart className="text-4xl mb-2 animate-pulse" />}
-          color="red"
+          color="rgb(232 82 79)"
           title="Personalized Care"
           index={0}
         />
 
         <Card
           icon={<FaUserMd className="text-4xl mb-2" />}
-          color="blue"
+          color="rgb(100 172 244)"
           title="Experienced Team"
           index={1}
         />
@@ -71,7 +71,7 @@ const AboutUs = () => {
           icon={
             <FaHandHoldingMedical className="text-4xl mb-2 animate-bounce" />
           }
-          color="green"
+          color="rgb(84 186 84)"
           title="Holistic Wellness"
           index={2}
         />

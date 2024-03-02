@@ -25,8 +25,8 @@ const HeaderLink = ({
   return (
     <Link
       href={linkTo}
-      className="duration-300 hover:text-[#099e33] hover:tracking-wider "
       onClick={handleScroll}
+      className="duration-300 hover:text-[#099e33] hover:tracking-wider w-36 text-center  "
     >
       {linkTitle}
     </Link>
@@ -107,7 +107,7 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="gap-10 text-sm md:text-xl font-bold pr-10 text-[#062d71] hidden lg:flex">
+        <div className="gap-5 text-sm md:text-xl font-bold pr-10 text-[#062d71] hidden lg:flex">
           <HeaderLink linkTitle="Our Services" linkTo="#our_services" />
           <HeaderLink linkTitle="Our Doctors" linkTo="#our_doctors" />
           <HeaderLink linkTitle="Contact Us" linkTo="#contact_us" />

@@ -19,13 +19,9 @@ const Footer: React.FC = () => {
               Contact us
             </p>
             <div className="flex flex-col items-center lg:items-start gap-1">
-              <div>
-                <p className="text-xs lg:text-sm">+977-9851047834</p>
-                <p className="text-xs lg:text-sm">+977-9806469216</p>
-              </div>
-              <div>
-                <p className="text-xs lg:text-sm">jibikapharmacy@gmail.com</p>
-              </div>
+              <p className="text-xs lg:text-sm">+977-9851047834</p>
+              <p className="text-xs lg:text-sm">+977-9806469216</p>
+              <p className="text-xs lg:text-sm">jibikapharmacy@gmail.com</p>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center lg:justify-self-center lg:gap-4">
@@ -53,7 +49,7 @@ const Footer: React.FC = () => {
                 aria-label="Facebook"
                 className="border rounded-full p-1 lg:p-2"
               >
-                <FaFacebook className="text-blue-600 text-sm lg:text-lg hover:text-blue-800" />
+                <FaFacebook className="text-sm lg:text-lg hover:text-blue-600" />
               </a>
               <a
                 href="https://www.instagram.com/jibika_pharmacy/"
@@ -62,7 +58,7 @@ const Footer: React.FC = () => {
                 aria-label="Instagram"
                 className="border rounded-full p-1 lg:p-2"
               >
-                <FaInstagram className="text-indigo-600 text-sm lg:text-lg hover:text-indigo-800" />
+                <FaInstagram className="text-sm lg:text-lg hover:text-indigo-600" />
               </a>
               <a
                 href="https://www.youtube.com/@jibikapharmacy4965"
@@ -71,7 +67,7 @@ const Footer: React.FC = () => {
                 aria-label="YouTube"
                 className="border rounded-full p-1 lg:p-2"
               >
-                <FaYoutube className="text-red-600 text-sm lg:text-lg hover:text-red-800" />
+                <FaYoutube className=" text-sm lg:text-lg hover:text-red-600" />
               </a>
               <a
                 href="https://x.com/jibikapharmacy?s=11&t=dVEtJqFDZoxFRgsrUGFZqQ"
@@ -80,7 +76,7 @@ const Footer: React.FC = () => {
                 aria-label="Twitter"
                 className="border rounded-full p-1 lg:p-2"
               >
-                <FaTwitter className="text-blue-500 text-sm lg:text-lg hover:text-blue-800" />
+                <FaTwitter className=" text-sm lg:text-lg hover:text-blue-600" />
               </a>
               <a
                 href="https://www.tiktok.com/@jibikapharmacy1?_t=8kIra4T1Gzv&_r=1"
@@ -89,14 +85,14 @@ const Footer: React.FC = () => {
                 aria-label="TikTok"
                 className="border rounded-full p-1 lg:p-2"
               >
-                <FaTiktok className="text-gray-500 text-sm lg:text-lg hover:text-gray-50" />
+                <FaTiktok className="text-sm lg:text-lg hover:text-gray-500" />
               </a>
             </div>
           </div>
         </div>
         <div className="w-full border-b-2 mt-6 "></div>
         <p className="text-gray-500 mt-3 text-center text-xs lg:text-sm">
-          <span>&copy;</span> 2023. Jibika Pharmacy and Health Clinic. All
+          <span>&copy;</span> 2024. Jibika Pharmacy and Health Clinic. All
           rights reserved.
         </p>
       </div>

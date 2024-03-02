@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <div className="flex justify-between h-screen">
       <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#062d71] to-transparent z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2e2e2e] to-transparent z-0"></div>
 
         {/* Heading */}
         <motion.h2

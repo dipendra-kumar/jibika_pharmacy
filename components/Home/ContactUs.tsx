@@ -8,6 +8,7 @@ import { fadeIn, textVariant } from "@/utils/motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { config } from "dotenv";
+import HeadTitle from "../HeadTitle";
 config();
 
 const ContactUs = () => {
@@ -76,8 +77,9 @@ const ContactUs = () => {
   maxTime.setHours(17, 0); // Set maximum time to 5:00 PM
 
   return (
-    <>
-      <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4 pt-10 lg:px-40 bg-green-700  md:h-96">
+    <div>
+      <HeadTitle title="Contact Us" />
+      <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4 pt-10 lg:px-40 bg-green-700  md:h-96 ">
         <motion.div variants={textVariant()} className="mx-auto mb-10 md:mt-20">
           <h1 className="text-4xl font-bold mt-4 text-gray-50">
             Want to schedule an appointment with us?
@@ -220,7 +222,7 @@ const ContactUs = () => {
           }`}
         ></h1>
       </section>
-    </>
+    </div>
   );
 };
 
