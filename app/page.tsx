@@ -1,16 +1,15 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Home from "@/components/Home";
-import React from "react";
+"use client";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const page = () => {
-  return (
-    <div>
-      <Header />
-      <Home />
-      <Footer />
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    document.title = "Jibika Pharmacy & Health Clinic - Home";
+    router.push("/home");
+  }, []);
+  return <div></div>;
 };
 
 export default page;

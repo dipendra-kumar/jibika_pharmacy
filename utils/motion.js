@@ -16,6 +16,26 @@ export const textVariant = (delay) => {
   };
 };
 
+export const navVariant = () => {
+
+  return {
+    hidden: {
+      y: -100,
+      opacity: 0,
+    },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: type,
+        delay: delay,
+        duration: duration,
+        ease: "easeOut",
+      },
+    }
+  }
+};
+
 export const fadeIn = (direction, type, delay, duration) => {
   return {
     hidden: {

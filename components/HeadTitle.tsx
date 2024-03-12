@@ -10,26 +10,20 @@ const nunitoSans = Nunito_Sans({
 
 interface TitleProps {
   title: string;
+  subtitle: string;
 }
 
-const HeadTitle = ({ title }: TitleProps) => {
+const HeadTitle = ({ title, subtitle }: TitleProps) => {
   return (
-    <div className="w-full flex items-center justify-center gap-5 my-10">
-      <motion.div
-        variants={zoomIn(0.2, 0.5)}
-        className="w-20 bg-blue-400 h-2 rounded-full"
-      ></motion.div>
-      <motion.h2
-        variants={textVariant()}
-        className={`${nunitoSans.className} text-4xl lg:text-6xl font-bold capitalize text-center  cursor-default`}
-      >
+    <motion.div
+      variants={textVariant()}
+      className="w-full flex flex-col items-center justify-center p-5 gap-5"
+    >
+      <h1 className="inline-block text-secondary border-2 border-[#effff5] rounded-full py-1 px-4 max-w-fit">
         {title}
-      </motion.h2>
-      <motion.div
-        variants={zoomIn(0.2, 0.5)}
-        className="w-20 bg-blue-400 h-2 rounded-full"
-      ></motion.div>
-    </div>
+      </h1>
+      <p className="font-bold text-5xl ">{subtitle}</p>
+    </motion.div>
   );
 };
 

@@ -28,8 +28,8 @@ interface DoctorProfile {
   name: string;
   designation: string;
   qualification: string;
-  testimonial: string;
   extraAttributes: string[];
+  workPlace?: string;
 }
 
 const DoctorProfileCard: React.FC<DoctorProfile> = ({
@@ -38,32 +38,37 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
   name,
   designation,
   qualification,
-  testimonial,
   extraAttributes,
+  workPlace,
 }) => {
   return (
     <motion.div
       variants={fadeIn("up", "spring", index * 0.5, 1)}
-      className="shadow-md border rounded-xl bg-white max-w-sm  relative overflow-hidden md:min-h-[450px] md:max-h-[450px]"
+      className="shadow-md border rounded-xl bg-white max-w-sm  overflow-hidden md:min-h-[400px] md:max-h-[400px]"
     >
-      {/* Profile Image */}
-      <div className="relative h-60 mb-2">
+      <div className="relative group h-full flex flex-col">
         <Image
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full group-hover:scale-110 transition-all duration-500 "
           src={avatar ? avatar : DefaultDoctor}
           alt={name}
         />
-        {/* Details Overlay */}
-        <div className="absolute inset-0 flex flex-col justify-end bg-black bg-opacity-20 text-white p-4">
-          <div className="text-xl font-bold mb-1">{name}</div>
-          <div className="text-sm">{designation}</div>
-          <div className="text-sm">{qualification}</div>
-          <div className="text-sm">{extraAttributes}</div>
+        <div className=" absolute bottom-0 w-full flex flex-col items-center bg-[#fff]  text-white p-4 transition-all duration-300">
+          <div className="text-xl font-bold mb-1 text-gray-800">{name}</div>
+          <div className="text-sm text-[#069e32] text-center font-semibold">
+            {designation}
+          </div>
+          {workPlace && (
+            <div className="text-sm text-[#069e32] text-center">
+              {workPlace}
+            </div>
+          )}
+          <div className="text-sm text-gray-500 hidden group-hover:flex ">
+            {qualification}
+          </div>
+          <div className="text-sm text-gray-500 hidden group-hover:flex ">
+            {extraAttributes}
+          </div>
         </div>
-      </div>
-      {/* Testimonial */}
-      <div className="text-sm text-black italic px-5 py-2 text-center">
-        {testimonial}
       </div>
     </motion.div>
   );
@@ -76,9 +81,8 @@ const OurDoctors = () => {
       name: "Dr. Arbind Bhusal",
       qualification: "MBBS, MD",
       designation: "Consultant Neuropsychiatrist ",
+      workPlace: "Civil Service Hospital, Kathmandu",
       extraAttributes: ["NMC No:7007"],
-      testimonial:
-        "As a Neuropsychiatrist, I strive to offer specialized care rooted in understanding and empathy. My aim is to create a safe space for patients, addressing their individual needs with tailored treatment plans. I am dedicated to supporting mental health and well-being, making a positive impact on each person's life.",
     },
     {
       avatar: DrDipak,
@@ -86,8 +90,7 @@ const OurDoctors = () => {
       qualification: "MBBS, MD",
       designation: "Consultant Endocrinologist ",
       extraAttributes: ["NMC No:7311"],
-      testimonial:
-        "As an Endocrinologist, my passion lies in restoring hormonal balance and improving lives. I am committed to providing comprehensive care, utilizing the latest advancements in endocrinology to diagnose and manage a wide spectrum of hormonal disorders. My goal is to empower patients through education and personalized treatment strategies, ensuring their well-being and long-term health.",
+      workPlace: "Civil Service Hospital, Kathmandu",
     },
 
     {
@@ -96,17 +99,15 @@ const OurDoctors = () => {
       qualification: "MBBS, FCPS(ENT-HNS)",
       designation: "Consultant ENT-HNS ",
       extraAttributes: ["NMC No:6903"],
-      testimonial:
-        "Being an ENT-HNS specialist, my focus is on delivering precise and compassionate care to address ear, nose, and throat ailments. With a blend of expertise and innovation, I strive to offer advanced solutions and surgical interventions when necessary. My aim is to enhance the quality of life for my patients, fostering better hearing, breathing, and overall wellness.",
+      workPlace: "Nepal Medicity Hospital, Kathmandu",
     },
     {
       avatar: DrArunSigdel,
       name: "Dr. Arun Sigdel",
       qualification: "MBBS (K.U), MS, Orthopedic (TUTH, IOM) ",
-      designation: "Asst. professor Civil Service Hospital, Kathmandu  ",
+      designation: "Assistant Professor ",
       extraAttributes: ["NMC No:6920"],
-      testimonial:
-        "As an orthopedic specialist, I'm dedicated to restoring mobility and enhancing quality of life for my patients. With a focus on cutting-edge treatments and compassionate care, I strive to empower individuals on their journey to optimal musculoskeletal health.",
+      workPlace: "Civil Service Hospital, Kathmandu",
     },
     {
       avatar: DrShreeRamShah,
@@ -114,18 +115,16 @@ const OurDoctors = () => {
       qualification: "MBBS, MD",
       designation: "Consultant Pediaerician ",
       extraAttributes: ["NMC No:10047"],
-      testimonial:
-        "As a Pediatrician, my dedication revolves around nurturing the health and development of children. I am committed to providing families with guidance, support, and medical expertise from infancy through adolescence. My passion lies in ensuring each child's growth, advocating for preventive care, and addressing any health concerns with compassion and expertise.",
+      workPlace: "Kanti Children Hospital, Kathmandu",
     },
 
     {
       avatar: DrAnilJoshi,
       name: "Mr. Anil Kumar Joshi",
       qualification: "BMLT, DPharma",
-      designation: "Asst. Pharmacist",
+      designation: "Assistant Pharmacist",
       extraAttributes: ["NPC No: A-9339"],
-      testimonial:
-        "As a dedicated Pharmacist and Pharmacy Owner, I am committed to providing comprehensive healthcare solutions. My approach combines expertise and empathy to ensure each patient receives personalized care. It's my privilege to support and contribute to the well-being of those I serve.",
+      workPlace: "Jibika Pharmacy , Kathmandu",
     },
     {
       avatar: MrHemant,
@@ -133,16 +132,15 @@ const OurDoctors = () => {
       qualification: "",
       designation: "Management Chief",
       extraAttributes: [""],
-      testimonial:
-        "As the Management Chief, I'm dedicated to ensuring top-quality service, seamless operations, and customer-centric care at our pharmacy. My focus is on excellence, efficiency, and the well-being of our patrons.",
+      workPlace: "Jibika Health Clinic , Kathmandu",
     },
   ];
   return (
-    <div className="px-10 my-20">
-      <div className="w-full flex flex-col items-center justify-center p-5 lg:px-10 ">
-        <HeadTitle title="Meet our Team" />
+    <div className="px-40 my-40">
+      <div className="w-full flex flex-col items-center justify-center p-5 lg:px-10 gap-5 ">
+        <HeadTitle title="Doctors" subtitle="Our Experienced Doctors" />
       </div>
-      <div className="flex flex-wrap gap-10 items-center justify-center ">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
         {doctors.map((doctor, index) => (
           <DoctorProfileCard
             index={index}
@@ -151,7 +149,7 @@ const OurDoctors = () => {
             name={doctor.name}
             qualification={doctor.qualification}
             designation={doctor.designation}
-            testimonial={doctor.testimonial}
+            workPlace={doctor.workPlace}
             extraAttributes={doctor.extraAttributes}
           />
         ))}
