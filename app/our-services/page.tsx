@@ -1,4 +1,4 @@
-import OurServices from "@/components/Home/OurServices";
+import OurServices from "@/app/our-services/OurServices";
 import React from "react";
 
 const page = () => {

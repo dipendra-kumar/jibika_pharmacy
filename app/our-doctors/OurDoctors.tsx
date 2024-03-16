@@ -15,7 +15,7 @@ import {
 } from "@/assets";
 import { SectionWrapper } from "@/hoc";
 import { fadeIn, textVariant } from "@/utils/motion";
-import HeadTitle from "../HeadTitle";
+import HeadTitle from "../../components/HeadTitle";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -43,31 +43,23 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
 }) => {
   return (
     <motion.div
-      variants={fadeIn("up", "spring", index * 0.5, 1)}
-      className="shadow-md border rounded-xl bg-white max-w-sm  overflow-hidden md:min-h-[400px] md:max-h-[400px]"
+      className="shadow-md border rounded-xl bg-white  overflow-hidden  min-w-[385px] min-h-[400px]"
+      variants={fadeIn("up", "tween", index * 0.25, 0.75)}
     >
       <div className="relative group h-full flex flex-col">
         <Image
-          className="object-cover w-full h-full group-hover:scale-110 transition-all duration-500 "
+          className="object-cover w-full h-72"
           src={avatar ? avatar : DefaultDoctor}
           alt={name}
         />
-        <div className=" absolute bottom-0 w-full flex flex-col items-center bg-[#fff]  text-white p-4 transition-all duration-300">
-          <div className="text-xl font-bold mb-1 text-gray-800">{name}</div>
-          <div className="text-sm text-[#069e32] text-center font-semibold">
+        <div className="p-4">
+          <h5 className="mb-1 text-xl font-bold">{name}</h5>
+          <p className="text-sm text-[#069e32] font-semibold mb-2">
             {designation}
-          </div>
-          {workPlace && (
-            <div className="text-sm text-[#069e32] text-center">
-              {workPlace}
-            </div>
-          )}
-          <div className="text-sm text-gray-500 hidden group-hover:flex ">
-            {qualification}
-          </div>
-          <div className="text-sm text-gray-500 hidden group-hover:flex ">
-            {extraAttributes}
-          </div>
+          </p>
+          <p className="text-sm text-gray-500">{workPlace}</p>
+          <p className="text-sm text-gray-500">{qualification}</p>
+          <p className="text-sm text-gray-500">{extraAttributes}</p>
         </div>
       </div>
     </motion.div>
@@ -138,9 +130,18 @@ const OurDoctors = () => {
   return (
     <div className="px-40 my-40">
       <div className="w-full flex flex-col items-center justify-center p-5 lg:px-10 gap-5 ">
-        <HeadTitle title="Doctors" subtitle="Our Experienced Doctors" />
+        <HeadTitle
+          title="Meet Our Doctors"
+          subtitle="Providing Expert Care for Your Health"
+        />
+        <p className="text-center text-gray-700  text-lg md:text-xl">
+          Our team of experienced doctors is dedicated to providing high-quality
+          medical care and personalized treatment plans tailored to your needs.
+          With a focus on excellence and compassion, we strive to ensure the
+          well-being and satisfaction of every patient.
+        </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+      <div className="flex items-center justify-center flex-wrap gap-10 ">
         {doctors.map((doctor, index) => (
           <DoctorProfileCard
             index={index}

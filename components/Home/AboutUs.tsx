@@ -1,67 +1,83 @@
 "use client";
-import { About_1, About_2 } from "@/assets";
-import Image from "next/image";
-import { FC } from "react";
-import { FaCheckCircle } from "react-icons/fa";
+import React from "react";
 import { motion } from "framer-motion";
+import { fadeIn, textVariant } from "@/utils/motion";
+import { SectionWrapper } from "@/hoc";
+import { FaHeart, FaUserMd, FaHandHoldingMedical } from "react-icons/fa";
+import { Nunito_Sans } from "next/font/google";
 import HeadTitle from "../HeadTitle";
 
-const AboutUs: FC = () => {
-  return (
-    <div className=" w-full py-5 flex items-center justify-center h-screen md:h-[600px] ">
-      <div className="w-[75%] h-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-96">
-          <div className="relative w-full h-96">
-            <div className="absolute top-0 right-0 w-3/4 rounded-lg p-5 bg-white">
-              <Image
-                className="w-full rounded-lg "
-                src={About_1}
-                alt="about1"
-              />
-            </div>
-            <div className="absolute bottom-0 left-0 w-2/4  rounded-lg p-5 bg-white">
-              <Image className="w-full" src={About_2} alt="about1" />
-            </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <HeadTitle title="About Us" subtitle=" Get to Know About Us!" />
-            <p className="text-secondary">
-              Our pharmacy is dedicated to providing exceptional service and
-              high-quality medications to our customers. With a focus on
-              customer satisfaction and health, we strive to meet your
-              pharmaceutical needs with care and professionalism.
-            </p>
-            <p className="mb-4 text-secondary">
-              At our pharmacy, we understand the importance of trust and
-              reliability when it comes to your health. Our team of experienced
-              professionals is committed to offering personalized assistance and
-              guidance on medications, ensuring that you receive the best
-              possible care.
-            </p>
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+interface CardProps {
+  icon: React.ReactNode;
+  color: string;
+  title: string;
+  index: number;
+}
 
-            <p className="flex items-center gap-1 text-secondary">
-              <FaCheckCircle className="text-primary-blue me-3" />
-              Quality health care
-            </p>
-            <p className="flex items-center gap-1 text-secondary">
-              <FaCheckCircle className="text-primary-blue me-3" />
-              Only Qualified Doctors
-            </p>
-            <p className="flex items-center gap-1 text-secondary">
-              <FaCheckCircle className="text-primary-blue me-3" />
-              Medical Research Professionals
-            </p>
-            <a
-              className="bg-blue-600 text-white rounded-full py-3 px-5 mt-3 max-w-fit"
-              href="#"
-            >
-              Read More
-            </a>
-          </div>
-        </div>
+const Card: React.FC<CardProps> = ({ icon, color, title, index }) => {
+  return (
+    <motion.div
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+      className={`flex flex-col items-center justify-center rounded-lg p-6 text-white`}
+      style={{ backgroundColor: color }}
+    >
+      {icon}
+      <p className="text-lg font-semibold mt-2">{title}</p>
+    </motion.div>
+  );
+};
+
+const AboutUs = () => {
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-between p-5 lg:p-10 relative z-10 my-20">
+      <HeadTitle
+        title="Welcome to"
+        subtitle="Jibika Pharmacy & Health Clinic"
+      />
+
+      <div className="w-full md:w-3/4 max-w-4xl ">
+        <motion.p
+          variants={textVariant()}
+          className="text-lg lg:text-xl text-center mb-8 h-full flex items-center justify-center"
+        >
+          Jibika Pharmacy and Health Clinic is your trusted partner in health,
+          providing comprehensive pharmaceutical services and personalized care.
+          Our dedicated team of experts is committed to enhancing your
+          well-being by offering a wide range of medications, wellness products,
+          and healthcare services.
+        </motion.p>
+      </div>
+
+      <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card
+          icon={<FaHeart className="text-4xl mb-2 animate-pulse" />}
+          color="rgb(232 82 79)"
+          title="Personalized Care"
+          index={0}
+        />
+
+        <Card
+          icon={<FaUserMd className="text-4xl mb-2" />}
+          color="rgb(100 172 244)"
+          title="Experienced Team"
+          index={1}
+        />
+
+        <Card
+          icon={
+            <FaHandHoldingMedical className="text-4xl mb-2 animate-bounce" />
+          }
+          color="rgb(84 186 84)"
+          title="Holistic Wellness"
+          index={2}
+        />
       </div>
     </div>
   );
 };
 
-export default AboutUs;
+export default SectionWrapper(AboutUs, "about_us");
