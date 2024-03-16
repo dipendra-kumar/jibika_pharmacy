@@ -20,7 +20,7 @@ const nunitoSans = Nunito_Sans({
 });
 import { fadeIn, textVariant } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
-import HeadTitle from "../HeadTitle";
+import HeadTitle from "../../components/HeadTitle";
 
 interface Service {
   index: number;
@@ -111,9 +111,15 @@ const OurServices = () => {
   ];
 
   return (
-    <div className="px-10 my-20">
+    <div className="px-10 my-40">
       <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10">
         <HeadTitle title="Our Services" subtitle="Health Care Solutions" />
+        <p className="text-center text-gray-700 text-lg md:text-xl mb-8">
+          At our health care center, we provide a wide range of services
+          tailored to meet your medical needs. From diagnostic tests to advanced
+          imaging procedures, our dedicated team is committed to ensuring your
+          well-being and providing comprehensive care solutions.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:grid-cols-4 items-center justify-center">
           {serviceData.map((service, index) => (
             <ServiceCard

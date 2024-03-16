@@ -1,17 +1,16 @@
 import AboutUs from "./Home/AboutUs";
 import ContactUs from "./Home/GetAppointment";
 import Hero from "./Home/Hero";
-import OurDoctors from "./Home/OurDoctors";
-import OurServices from "./Home/OurServices";
-import KnowOurLocation from "./KnowOurLocation";
+import HomeServices from "./Home/TopServices";
+import TopDoctors from "./Home/TopDoctors";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <AboutUs />
-      <OurServices />
-      <OurDoctors />
+      <HomeServices />
+      <TopDoctors />
       <ContactUs />
     </>
   );

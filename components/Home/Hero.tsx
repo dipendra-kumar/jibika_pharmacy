@@ -4,7 +4,7 @@ import { Montserrat } from "next/font/google";
 import { main_section_img } from "@/assets";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { fadeIn } from "@/utils/motion";
+import { fadeIn, zoomIn } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
 
 const montserrat = Montserrat({
@@ -20,7 +20,7 @@ const Hero = () => {
 
         {/* Heading */}
         <motion.h2
-          variants={fadeIn("right", "tween", 0.1, 0.5)}
+          variants={zoomIn(0.3, 0.7)}
           className={`${montserrat.className} text-center text-white text-4xl sm:text-6xl lg:text-8xl font-extrabold uppercase tracking-wider relative z-10`}
         >
           Your Local Neighbourhood Pharmacy

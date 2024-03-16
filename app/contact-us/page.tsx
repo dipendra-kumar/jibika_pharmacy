@@ -64,9 +64,9 @@ const ContactUs = () => {
       <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5 ">
         <motion.div
           variants={textVariant(0.25)}
-          className="border px-10 py-5 gap-5 font-semibold bg-primary rounded-xl flex items-center "
+          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center "
         >
-          <BsEnvelopeFill className="text-primary-blue bg-white h-14 w-14  p-3 rounded-xl" />
+          <BsEnvelopeFill className="text-primary-green bg-white h-14 w-14 text-secondary p-3 rounded-xl" />
           <div>
             <h2 className="text-gray-500 font-normal">Email address</h2>
             <p>jibikapharmacy@gmail.com</p>
@@ -74,9 +74,9 @@ const ContactUs = () => {
         </motion.div>
         <motion.div
           variants={textVariant(0.5)}
-          className="border px-10 py-5 gap-5 font-semibold bg-primary rounded-xl flex items-center "
+          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center "
         >
-          <FaPhoneAlt className="text-primary-blue bg-white h-14 w-14 p-3 rounded-xl" />
+          <FaPhoneAlt className="text-primary-green bg-white text-secondary h-14 w-14 p-3 rounded-xl" />
           <div>
             <h2 className="text-gray-500 font-normal">Call us now</h2>
             <p>
@@ -87,9 +87,9 @@ const ContactUs = () => {
         </motion.div>
         <motion.div
           variants={textVariant(0.75)}
-          className="border px-10 py-5 gap-5 font-semibold bg-primary rounded-xl flex items-center "
+          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center "
         >
-          <FaMapMarkerAlt className="text-primary-blue bg-white h-14 w-14 p-3 rounded-xl" />
+          <FaMapMarkerAlt className="text-primary-green bg-white text-secondary h-14 w-14 p-3 rounded-xl" />
           <div>
             <h2 className="text-gray-500 font-normal">Location</h2>
             <p>Buddhanagar-10, Kathmandu, Nepal</p>
