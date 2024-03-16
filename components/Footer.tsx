@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
             <div className="flex flex-col items-center lg:items-start gap-1">
               <p className="text-xs lg:text-sm">+977-9851047834</p>
               <p className="text-xs lg:text-sm">+977-9806469216</p>
-              <p className="text-xs lg:text-sm">jibikapharmacy@gmail.com</p>
+              <p className="text-xs lg:text-sm">info@jibikapharmacy.com</p>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center lg:justify-self-center lg:gap-4">

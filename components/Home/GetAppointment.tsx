@@ -30,13 +30,15 @@ const GetAppointment = () => {
   const onSubmit = async (data: any) => {
     try {
       const API_ENDPOINT = "https://api.web3forms.com/submit";
-      const { name, email, phone, query } = data;
+      console.log(data);
+      const { name, email, phone, doctor, query } = data;
 
       const payload = {
         apikey: process.env.NEXT_PUBLIC_WEB3_FORMS_KEY,
         name,
         email,
         phone,
+        doctor,
         query,
         date: selectedDate.toDateString(),
         time: selectedDate.toLocaleTimeString([], {
@@ -77,9 +79,12 @@ const GetAppointment = () => {
   maxTime.setHours(21, 0); // Set maximum time to 9:00 PM
 
   return (
-    <div className="pt-40">
-      <HeadTitle title="Contact Us" subtitle="Have Any Query?" />
-      <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4 pt-10 lg:px-40 bg-green-700  md:h-96 ">
+    <div className="py-40">
+      <HeadTitle
+        title="Book an appointment"
+        subtitle="Want to consult with our doctors?"
+      />
+      <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4 pt-10 lg:px-40 bg-green-700  md:h-96 mt-10 ">
         <motion.div variants={textVariant()} className="mx-auto mb-10 md:mt-20">
           <h1 className="text-4xl font-bold mt-4 text-gray-50">
             Want to schedule an appointment with us?
@@ -95,7 +100,9 @@ const GetAppointment = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-blue-900"
         >
-          <h1 className="text-2xl font-bold text-gray-50">Send a message</h1>
+          <h1 className="text-2xl font-bold text-gray-50">
+            Please fill the details below
+          </h1>
 
           <label htmlFor="name" className=" font-light mt-8 text-gray-50">
             Full name<span className="text-red-500">*</span>
@@ -162,6 +169,37 @@ const GetAppointment = () => {
             <p className="text-red-500">Phone number is required!</p>
           )}
 
+          <label htmlFor="doctor" className="font-light mt-8 text-gray-50">
+            Select Doctor<span className="text-red-500">*</span>
+          </label>
+          <select
+            id="doctor"
+            {...register("doctor", { required: true })}
+            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
+          >
+            <option className="text-black" value="">
+              Select Doctor for Appointment
+            </option>
+            <option className="text-black" value="Dr. Arbind Bhusal">
+              Dr. Arbind Bhusal - Consultant Neuropsychiatrist
+            </option>
+            <option className="text-black" value="Dr. Dipak Paudel">
+              Dr. Dipak Paudel - Consultant Endocrinologist
+            </option>
+            <option className="text-black" value="Dr. Chandan Baranwal">
+              Dr. Chandan Baranwal - Consultant ENT-HNS
+            </option>
+            <option className="text-black" value="Dr. Arun Sigdel">
+              Dr. Arun Sigdel - Consultant Orthopedic
+            </option>
+            <option className="text-black" value=" Dr. Shree Ram Prashad Shah">
+              Dr. Shree Ram Prashad Shah - Consultant Pediaerician
+            </option>
+          </select>
+          {errors?.doctor && (
+            <p className="text-red-500">Please select a doctor.</p>
+          )}
+
           <label
             htmlFor="date"
             className="text-white font-light mt-4 dark:text-gray-50"
@@ -178,7 +216,7 @@ const GetAppointment = () => {
             timeCaption="Time"
             dateFormat="MMMM d, yyyy h:mm aa"
             placeholderText="Select date and time"
-            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white pointer-events-auto z-0"
+            className="w-full bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white pointer-events-auto z-0"
             minDate={new Date(new Date().setDate(new Date().getDate() + 1))}
             minTime={minTime}
             maxTime={maxTime}

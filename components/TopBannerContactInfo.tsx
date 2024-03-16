@@ -7,54 +7,52 @@ import {
   FaLinkedinIn,
   FaInstagram,
   FaPhoneAlt,
+  FaTiktok,
+  FaYoutube,
 } from "react-icons/fa";
 
 const TopBannerContactInfo: React.FC = () => {
   return (
-    <div className="lg:flex sticky items-center justify-between w-full h-fit hidden px-12 py-1 bg-secondary z-30">
+    <div className="lg:flex sticky items-center justify-between w-full h-fit hidden px-12 py-1 bg-primary z-30">
       <div className="flex gap-5 ">
         <div className="flex items-center py-3">
-          <FaMapMarkerAlt className="text-primary-green" />
-          <p className="ml-2 text-secondary ">
-            Buddhanagar-10, Kathmandu, Nepal
-          </p>
+          <FaMapMarkerAlt className="text-light" />
+          <p className="ml-2 text-dark ">Buddhanagar-10, Kathmandu, Nepal</p>
         </div>
         <div className="flex items-center py-3">
-          <FaClock className="text-primary-green" />
-          <p className="ml-2 text-secondary ">
-            Sun - Sat : 09.00 AM - 09.00 PM
-          </p>
+          <FaClock className="text-light" />
+          <p className="ml-2 text-dark ">Sun - Sat : 09.00 AM - 09.00 PM</p>
         </div>
       </div>
       <div className="flex items-center">
         <div className="flex items-center mr-4">
-          <FaPhoneAlt className="text-primary-green" />
-          <p className="ml-2 text-secondary">+977-9851047834</p>
+          <FaPhoneAlt className="text-light" />
+          <p className="ml-2 text-dark">+977-9851047834</p>
         </div>
         <div className="flex items-center justify-center gap-2">
           <a
-            className=" rounded-full h-8 w-8 flex items-center justify-center bg-white text-primary-green "
-            href="#"
+            className="rounded-full h-8 w-8 flex items-center justify-center bg-white text-blue-500"
+            href="https://www.facebook.com/jibikapharmacy"
           >
             <FaFacebookF />
           </a>
           <a
-            className=" rounded-full h-8 w-8 flex items-center justify-center bg-white text-primary-green "
-            href="#"
+            className="rounded-full h-8 w-8 flex items-center justify-center bg-white text-purple-500 p-1"
+            href="https://www.instagram.com/jibika_pharmacy/"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            className="rounded-full h-8 w-8 flex items-center justify-center bg-white text-blue-400"
+            href="https://x.com/jibikapharmacy?s=11&t=dVEtJqFDZoxFRgsrUGFZqQ"
           >
             <FaTwitter />
           </a>
           <a
-            className=" rounded-full h-8 w-8 flex items-center justify-center bg-white text-primary-green p-1"
-            href="#"
+            className="rounded-full h-8 w-8 flex items-center justify-center bg-white text-red-500 p-1"
+            href="https://www.youtube.com/@jibikapharmacy4965"
           >
-            <FaLinkedinIn />
-          </a>
-          <a
-            className=" rounded-full h-8 w-8 flex items-center justify-center bg-white text-primary-green p-1"
-            href="#"
-          >
-            <FaInstagram />
+            <FaYoutube />
           </a>
         </div>
       </div>

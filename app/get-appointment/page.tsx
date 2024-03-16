@@ -1,8 +1,8 @@
-import ContactUs from "@/components/Home/GetAppointment";
+import GetAppointment from "@/components/Home/GetAppointment";
 import React from "react";
 
 const page = () => {
-  return <ContactUs />;
+  return <GetAppointment />;
 };
 
 export default page;
