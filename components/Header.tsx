@@ -129,7 +129,7 @@ const Header = () => {
               <HiBars3BottomRight className="text-4xl text-secondary" />
             </button>
             {isOpen && (
-              <div className="fixed inset-y-0 right-0 bg-white w-3/4 md:w-1/2 z-50 p-10 flex flex-col gap-10 font-semibold justify-center items-center border border-secondary text-2xl">
+              <div className="fixed inset-y-0 right-0 bg-white w-3/4 md:w-1/2 z-50 p-10 flex flex-col gap-10 font-semibold justify-center items-center text-2xl">
                 <button
                   className="absolute top-6 right-6 p-2"
                   onClick={handleSidebarClose}

@@ -117,7 +117,7 @@ const GetAppointment = () => {
             <p className="text-red-500">Patients name is required.</p>
           )}
           <div className="w-full flex gap-10 items-center justify-center">
-            <div className="w-1/2 flex flex-col">
+            <div className="w-1/2 flex flex-col mt-4">
               <label
                 htmlFor="email"
                 className="text-white font-light mt-4 dark:text-gray-50"

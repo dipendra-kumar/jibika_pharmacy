@@ -27,7 +27,7 @@ const Hero = () => {
           Your Local Neighbourhood Pharmacy
         </motion.h2>
       </div>
-      <div className="absolute -z-30 w-full h-full overflow-hidden ">
+      <div className="absolute -z-30 w-full h-full overflow-hidden">
         <div className="w-full h-full">
           <Image
             src={main_section_img}
@@ -41,7 +41,7 @@ const Hero = () => {
       </div>
 
       <Link href="get-appointment">
-        <button className=" flex lg:hidden absolute left-1/2 bottom-10 transform -translate-x-1/2 border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-light ">
+        <button className=" flex lg:hidden absolute left-1/2 bottom-10 transform -translate-x-1/2 border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-light rounded-full ">
           Shedule Appointment
         </button>
       </Link>
