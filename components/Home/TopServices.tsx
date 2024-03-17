@@ -119,12 +119,13 @@ const TopServices: React.FC = () => {
             />
           ))}
         </div>
-        <button
+        <motion.button
+          variants={textVariant()}
           className="mt-8 bg-primary hover:bg-secondary duration-300 text-white font-bold py-4 px-5 text-lg rounded"
           onClick={handleOnClick}
         >
           Explore All Services
-        </button>
+        </motion.button>
       </div>
     </div>
   );

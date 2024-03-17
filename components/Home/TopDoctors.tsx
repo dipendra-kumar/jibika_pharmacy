@@ -81,12 +81,13 @@ const TopDoctors: React.FC = () => {
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <button
+          <motion.button
+            variants={textVariant()}
             className="mt-8 bg-primary hover:bg-secondary duration-300 text-white font-bold py-4 px-5 text-lg rounded"
             onClick={handleOnClick}
           >
             See All Doctors
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>

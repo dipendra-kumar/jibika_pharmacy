@@ -128,7 +128,7 @@ const OurDoctors = () => {
     },
   ];
   return (
-    <div className="px-40 my-40">
+    <div className="md:px-40 px-10 my-40">
       <div className="w-full flex flex-col items-center justify-center p-5 lg:px-10 gap-5 ">
         <HeadTitle
           title="Meet Our Doctors"

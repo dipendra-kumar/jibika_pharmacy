@@ -43,7 +43,7 @@ const ServiceCard: React.FC<Service> = ({
       className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] min-h-[425px] text-black"
     >
       <div className="relative overflow-hidden h-52">
-        <Image
+        <img
           className="object-cover w-full h-full rounded-t-lg"
           src={icon.src}
           alt={`${title}-service`}
@@ -111,7 +111,7 @@ const OurServices = () => {
   ];
 
   return (
-    <div className="px-10 my-40">
+    <div className="px-10 md:px-40 my-40">
       <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10">
         <HeadTitle title="Our Services" subtitle="Health Care Solutions" />
         <p className="text-center text-gray-700 text-lg md:text-xl mb-8">

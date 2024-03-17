@@ -21,7 +21,7 @@ const TopBannerContactInfo: React.FC = () => {
         </div>
         <div className="flex items-center py-3">
           <FaClock className="text-light" />
-          <p className="ml-2 text-dark ">Sun - Sat : 09.00 AM - 09.00 PM</p>
+          <p className="ml-2 text-dark ">Sun - Sat : 06.00 AM - 10.00 PM</p>
         </div>
       </div>
       <div className="flex items-center">

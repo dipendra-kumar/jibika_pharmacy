@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { fadeIn, zoomIn } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
+import Link from "next/link";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -14,7 +15,7 @@ const montserrat = Montserrat({
 });
 const Hero = () => {
   return (
-    <div className="flex justify-between h-screen">
+    <div className="flex flex-col justify-between h-screen">
       <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-r from-[#2e2e2e] to-transparent z-0"></div>
 
@@ -38,6 +39,12 @@ const Hero = () => {
           />
         </div>
       </div>
+
+      <Link href="get-appointment">
+        <button className=" flex lg:hidden absolute left-1/2 bottom-10 transform -translate-x-1/2 border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-light ">
+          Shedule Appointment
+        </button>
+      </Link>
     </div>
   );
 };
