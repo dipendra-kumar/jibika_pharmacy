@@ -43,7 +43,7 @@ const ServiceCard: React.FC<Service> = ({
       className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] min-h-[425px] text-black"
     >
       <div className="relative overflow-hidden h-52">
-        <img
+        <Image
           className="object-cover w-full h-full rounded-t-lg"
           src={icon.src}
           alt={`${title}-service`}

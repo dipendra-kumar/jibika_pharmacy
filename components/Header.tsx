@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { PharmaLogo } from "@/assets";
 import Link from "next/link";
@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 import "./Header.css";
 import useWindowSize from "@/utils/useWindowSize";
 import { HiBars3BottomRight, HiXCircle } from "react-icons/hi2";
-import { FaCross } from "react-icons/fa";
 
 const HeaderLink = ({
   linkTo,
@@ -44,20 +43,32 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { width } = useWindowSize();
+  const scrollPositionRef = useRef(0);
 
   const handleScroll = () => {
-    const position = window.scrollY;
-    setIsFixed(position > 54 || width < 1024);
+    const position = scrollPositionRef.current;
+    if (width) {
+      setIsFixed(position > 54 || width < 1024);
+    }
   };
 
   useEffect(() => {
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    const updateScrollPosition = () => {
+      scrollPositionRef.current = window.scrollY;
+      handleScroll();
     };
-  }, []);
+
+    if (typeof window !== "undefined") {
+      updateScrollPosition();
+      window.addEventListener("scroll", updateScrollPosition, {
+        passive: true,
+      });
+
+      return () => {
+        window.removeEventListener("scroll", updateScrollPosition);
+      };
+    }
+  }, [width]);
 
   const handleSidebarOpen = () => {
     setIsOpen(true);
