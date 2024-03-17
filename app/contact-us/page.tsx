@@ -59,12 +59,12 @@ const ContactUs = () => {
     }
   };
   return (
-    <div className="w-full p-40">
+    <div className="w-full p-10 py-40">
       <HeadTitle title="Contact Us" subtitle="Have Any Query?" />
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5 ">
+      <div className="w-full flex flex-wrap items-center justify-center gap-5 ">
         <motion.div
           variants={textVariant(0.25)}
-          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center "
+          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center min-w-[425px] min-h-[125px]"
         >
           <BsEnvelopeFill className="text-primary-green bg-white h-14 w-14 text-secondary p-3 rounded-xl" />
           <div>
@@ -74,7 +74,7 @@ const ContactUs = () => {
         </motion.div>
         <motion.div
           variants={textVariant(0.5)}
-          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center "
+          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center min-w-[425px] min-h-[125px]"
         >
           <FaPhoneAlt className="text-primary-green bg-white text-secondary h-14 w-14 p-3 rounded-xl" />
           <div>
@@ -87,7 +87,7 @@ const ContactUs = () => {
         </motion.div>
         <motion.div
           variants={textVariant(0.75)}
-          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center "
+          className="border px-10 py-5 gap-5 font-semibold bg-light rounded-xl flex items-center min-w-[425px] min-h-[125px] "
         >
           <FaMapMarkerAlt className="text-primary-green bg-white text-secondary h-14 w-14 p-3 rounded-xl" />
           <div>
@@ -97,7 +97,7 @@ const ContactUs = () => {
         </motion.div>
       </div>
 
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:p-10 p-2">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:p-10 p-2 mt-10 ">
         <motion.form
           variants={fadeIn("up", "spring", 0.5, 1)}
           onSubmit={handleSubmit(onSubmit)}
