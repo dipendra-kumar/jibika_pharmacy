@@ -30,13 +30,13 @@ const GetAppointment = () => {
   const onSubmit = async (data: any) => {
     try {
       const API_ENDPOINT = "https://api.web3forms.com/submit";
-      console.log(data);
-      const { name, email, phone, doctor, query } = data;
+      const { name, age, gender, phone, doctor, query } = data;
 
       const payload = {
         apikey: process.env.NEXT_PUBLIC_WEB3_FORMS_KEY,
         name,
-        email,
+        age,
+        gender,
         phone,
         doctor,
         query,
@@ -105,7 +105,7 @@ const GetAppointment = () => {
           </h1>
 
           <label htmlFor="name" className=" font-light mt-8 text-gray-50">
-            Full name<span className="text-red-500">*</span>
+            Patient name<span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -114,25 +114,51 @@ const GetAppointment = () => {
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
           />
           {errors?.name && (
-            <p className="text-red-500">Fullname cannot be empty.</p>
+            <p className="text-red-500">Patients name is required.</p>
           )}
-
-          <label
-            htmlFor="email"
-            className="text-white font-light mt-4 dark:text-gray-50"
-          >
-            E-mail<span className="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            placeholder="Enter your email address."
-            {...register("email", { required: true })}
-            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
-          />
-          {errors?.email && (
-            <p className="text-red-500">Email cannot be empty.</p>
-          )}
-
+          <div className="w-full flex gap-10 items-center justify-center">
+            <div className="w-1/2 flex flex-col">
+              <label
+                htmlFor="email"
+                className="text-white font-light mt-4 dark:text-gray-50"
+              >
+                Age<span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                placeholder="Enter age."
+                {...register("age", { required: true })}
+                className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
+              />
+              {errors?.age && <p className="text-red-500">Age is required.</p>}
+            </div>
+            <div className="w-1/2 flex flex-col">
+              <label htmlFor="doctor" className="font-light mt-8 text-gray-50">
+                Gender<span className="text-red-500">*</span>
+              </label>
+              <select
+                id="gender"
+                {...register("gender", { required: true })}
+                className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-white"
+              >
+                <option className="text-black" value="">
+                  Select Gender
+                </option>
+                <option className="text-black" value="Male">
+                  Male
+                </option>
+                <option className="text-black" value="Female">
+                  Female
+                </option>
+                <option className="text-black" value="Others">
+                  Others
+                </option>
+              </select>
+              {errors?.gender && (
+                <p className="text-red-500">Please select the gender.</p>
+              )}
+            </div>
+          </div>
           <label
             htmlFor="subject"
             className="text-white font-light mt-4 dark:text-gray-50"
