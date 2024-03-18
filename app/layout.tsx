@@ -32,17 +32,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Jibika Pharmacy & Health Clinic",
-              alternateName: ["Jibika Pharmacy", "Jibika Clicnic"],
               url: "https://www.jibikapharmacy.com/",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate:
-                    "https://query.example.com/search?q=jibikapharmacy",
-                },
-                "query-input": "required name=jibikapharmacy",
-              },
             }),
           }}
         />
