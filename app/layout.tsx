@@ -39,7 +39,7 @@ export default function RootLayout({
                 target: {
                   "@type": "EntryPoint",
                   urlTemplate:
-                    "https://query.example.com/search?q={jibikapharmacy}",
+                    "https://query.example.com/search?q=jibikapharmacy",
                 },
                 "query-input": "required name=jibikapharmacy",
               },
