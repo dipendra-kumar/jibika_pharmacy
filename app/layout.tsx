@@ -25,6 +25,27 @@ export default function RootLayout({
           name="google-site-verification"
           content="Sl4FdDRb7PwUmSkfVwWoJIDu4zYOI7wuSvthwJoNjYU"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Jibika Pharmacy & Health Clinic",
+              alternateName: ["Jibika Pharmacy", "Jibika Clicnic"],
+              url: "https://www.jibikapharmacy.com/",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate:
+                    "https://query.example.com/search?q={jibikapharmacy}",
+                },
+                "query-input": "required name=jibikapharmacy",
+              },
+            }),
+          }}
+        />
       </head>
 
       <body className={`${inter.className} h-screen w-full bg-white`}>
