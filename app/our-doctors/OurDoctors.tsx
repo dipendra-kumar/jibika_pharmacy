@@ -11,6 +11,7 @@ import {
   DrChandan,
   DrDipak,
   DrShreeRamShah,
+  DrSureshMaharjan,
   MrHemant,
 } from "@/assets";
 import { SectionWrapper } from "@/hoc";
@@ -43,16 +44,16 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
 }) => {
   return (
     <motion.div
-      className="shadow-md border rounded-xl bg-white  overflow-hidden  min-w-[385px] min-h-[400px]"
+      className="shadow-md border rounded-xl bg-white  overflow-hidden  min-w-[385px] min-h-[500px] flex flex-col"
       variants={fadeIn("up", "tween", index * 0.25, 0.75)}
     >
-      <div className="relative group h-full flex flex-col">
+      <div className="relative group w-96  h-full flex flex-col">
         <Image
-          className="object-cover w-full h-72"
+          className="object-cover w-full h-72 "
           src={avatar ? avatar : DefaultDoctor}
           alt={name}
         />
-        <div className="p-4">
+        <div className="px-4 py-6  flex flex-col  text-left">
           <h5 className="mb-1 text-xl font-bold">{name}</h5>
           <p className="text-sm text-[#069e32] font-semibold mb-2">
             {designation}
@@ -108,6 +109,14 @@ const OurDoctors = () => {
       designation: "Consultant Pediaerician ",
       extraAttributes: ["NMC No:10047"],
       workPlace: "Kanti Children Hospital, Kathmandu",
+    },
+    {
+      avatar: DrSureshMaharjan,
+      name: "Dr. Suresh Maharjan",
+      qualification: "MBBS, MS",
+      designation: "General Surgery ",
+      extraAttributes: ["NMC No:16960"],
+      workPlace: "Bir Hospital, Kathmandu",
     },
 
     {

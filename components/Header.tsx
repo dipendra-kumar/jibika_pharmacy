@@ -18,16 +18,16 @@ const HeaderLink = ({
   linkTitle: string;
   onClick?: () => void;
 }) => {
-  const [currentPath, setCurrentPath] = useState<string>("home");
+  const [currentPath, setCurrentPath] = useState<string>("/");
   const pathName = usePathname();
 
   useEffect(() => {
     const path: string = pathName.split("/")[1];
-    setCurrentPath(path);
+    setCurrentPath(path || "/");
   }, [pathName]);
   return (
     <Link
-      href={linkTo}
+      href={linkTo == "home" ? "/" : linkTo}
       className={`duration-300 hover:text-green-500 ${
         currentPath == linkTo ? "font-bold text-green-500" : ""
       }`}
@@ -113,7 +113,7 @@ const Header = () => {
 
           {/* desktop nav bar */}
           <div className="gap-5 text-sm md:text-xl  pr-10 text-[#062d71] hidden lg:flex items-center">
-            <HeaderLink linkTitle="Home" linkTo="home" />
+            <HeaderLink linkTitle="Home" linkTo="/" />
             <HeaderLink linkTitle="Our Services" linkTo="our-services" />
             <HeaderLink linkTitle="Our Doctors" linkTo="our-doctors" />
             <HeaderLink linkTitle="Contact Us" linkTo="contact-us" />
@@ -139,7 +139,7 @@ const Header = () => {
 
                 <HeaderLink
                   linkTitle="Home"
-                  linkTo="/home"
+                  linkTo="/"
                   onClick={handleSidebarClose}
                 />
                 <HeaderLink
