@@ -5,6 +5,7 @@ import { Nunito_Sans } from "next/font/google";
 import {
   ECGImg,
   EEGImg,
+  HomeSampleCollection,
   USGImg,
   VaccinationImg,
   firstAidDressing,
@@ -108,10 +109,16 @@ const OurServices = () => {
       description:
         "Our vaccination services offer a comprehensive range of immunizations, safeguarding against various diseases and promoting individual and community health.",
     },
+    {
+      icon: HomeSampleCollection,
+      title: "Home Sample Collection",
+      description:
+        "We are providing the home blood sample collection as our service, to ensure maximum hospitality of our patients near us.",
+    },
   ];
 
   return (
-    <div className="px-10 md:px-40 my-40">
+    <div className="md:px-40 px-10 my-40">
       <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10">
         <HeadTitle title="Our Services" subtitle="Health Care Solutions" />
         <p className="text-center text-gray-700 text-lg md:text-xl mb-8">
@@ -120,7 +127,7 @@ const OurServices = () => {
           imaging procedures, our dedicated team is committed to ensuring your
           well-being and providing comprehensive care solutions.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:grid-cols-4 items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:grid-cols-3 items-center justify-center">
           {serviceData.map((service, index) => (
             <ServiceCard
               index={index}

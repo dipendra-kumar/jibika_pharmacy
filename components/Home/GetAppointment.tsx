@@ -79,7 +79,7 @@ const GetAppointment = () => {
   maxTime.setHours(21, 0); // Set maximum time to 9:00 PM
 
   return (
-    <div className="py-40">
+    <div className="py-28">
       <HeadTitle
         title="Book an appointment"
         subtitle="Want to consult with our doctors?"

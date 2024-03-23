@@ -87,20 +87,21 @@ const OurDoctors = () => {
     },
 
     {
-      avatar: DrChandan,
-      name: "Dr. Chandan Baranwal",
-      qualification: "MBBS, FCPS(ENT-HNS)",
-      designation: "Consultant ENT-HNS ",
-      extraAttributes: ["NMC No:6903"],
-      workPlace: "Nepal Medicity Hospital, Kathmandu",
-    },
-    {
       avatar: DrArunSigdel,
       name: "Dr. Arun Sigdel",
       qualification: "MBBS (K.U), MS, Orthopedic (TUTH, IOM) ",
       designation: "Assistant Professor ",
       extraAttributes: ["NMC No:6920"],
       workPlace: "Civil Service Hospital, Kathmandu",
+    },
+
+    {
+      avatar: DrChandan,
+      name: "Dr. Chandan Baranwal",
+      qualification: "MBBS, FCPS(ENT-HNS)",
+      designation: "Consultant ENT-HNS ",
+      extraAttributes: ["NMC No:6903"],
+      workPlace: "Nepal Medicity Hospital, Kathmandu",
     },
     {
       avatar: DrShreeRamShah,
@@ -110,6 +111,14 @@ const OurDoctors = () => {
       extraAttributes: ["NMC No:10047"],
       workPlace: "Kanti Children Hospital, Kathmandu",
     },
+    // {
+    //   // avatar: DrSureshMaharjan,
+    //   name: "Dr. Rakesh Kumar Shah",
+    //   qualification: "MBBS, MS",
+    //   designation: "Choletrol Surgeon",
+    //   extraAttributes: [""],
+    //   workPlace: "Jibika Health Clinic, Kathmandu",
+    // },
     {
       avatar: DrSureshMaharjan,
       name: "Dr. Suresh Maharjan",

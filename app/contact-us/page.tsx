@@ -59,7 +59,7 @@ const ContactUs = () => {
     }
   };
   return (
-    <div className="w-full p-10 py-40">
+    <div className="w-full p-10 py-28">
       <HeadTitle title="Contact Us" subtitle="Have Any Query?" />
       <div className="w-full flex flex-wrap items-center justify-center gap-5 ">
         <motion.div
