@@ -18,19 +18,21 @@ const HeaderLink = ({
   linkTitle: string;
   onClick?: () => void;
 }) => {
-  const [currentPath, setCurrentPath] = useState<string>("home");
   const pathName = usePathname();
+  const [currentPath, setCurrentPath] = useState<string>(
+    pathName.split("/")[1] || "home"
+  );
 
   useEffect(() => {
     const path: string = pathName.split("/")[1];
-    setCurrentPath(path || "/");
+    setCurrentPath(path || "home");
   }, [pathName]);
   return (
     <Link
-      href={linkTo == "home" ? "/" : linkTo}
+      href={linkTo}
       className={`duration-300 hover:text-green-500 ${
-        currentPath == linkTo ? "font-bold text-green-500" : ""
-      }  `}
+        currentPath === linkTo ? "font-bold text-green-500" : ""
+      }`}
       onClick={onClick}
     >
       {linkTitle}
@@ -87,7 +89,7 @@ const Header = () => {
       >
         <div className="relative w-[90%] flex items-center justify-end">
           <Link
-            href="home"
+            href=""
             className="flex items-center gap-3 absolute -left-1  justify-center "
           >
             <div className="flex items-center justify-center p-2">
@@ -113,7 +115,7 @@ const Header = () => {
 
           {/* desktop nav bar */}
           <div className="gap-5 text-sm md:text-xl  pr-10 text-[#062d71] hidden lg:flex items-center">
-            {/* <HeaderLink linkTitle="Home" linkTo="home" /> */}
+            <HeaderLink linkTitle="Home" linkTo="home" />
             <HeaderLink linkTitle="Our Services" linkTo="our-services" />
             <HeaderLink linkTitle="Our Doctors" linkTo="our-doctors" />
             <HeaderLink linkTitle="Contact Us" linkTo="contact-us" />
