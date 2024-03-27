@@ -20,7 +20,7 @@ import AboutBg from "./about_bg.svg";
 import MeetOurTeam from "./meet_our_team.svg";
 import About_1 from "./about-1.jpg";
 import About_2 from "./about-2.jpg";
-import DrSureshMaharjan from "./Dr_SureshMaharjan.jpg";
+import DrSureshMaharjan from "./Dr_SureshMaharjan.jpeg";
 import HomeSampleCollection from "./Home-Collection-Service-Alokamedicare.jpg";
 export {
   PharmaLogo,
