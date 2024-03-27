@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Nunito_Sans({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} h-screen w-full bg-white`}>
         {children}
+        <Toaster />
       </body>
     </html>
   );
