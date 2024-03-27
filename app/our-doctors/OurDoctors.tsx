@@ -44,12 +44,12 @@ const DoctorProfileCard: React.FC<DoctorProfile> = ({
 }) => {
   return (
     <motion.div
-      className="shadow-md border rounded-xl bg-white  overflow-hidden  min-w-[385px] min-h-[500px] flex flex-col"
+      className="shadow-md border rounded-xl bg-white  overflow-hidden  min-w-[350px] min-h-[500px] flex flex-col"
       variants={fadeIn("up", "tween", index * 0.25, 0.75)}
     >
-      <div className="relative group w-96  h-full flex flex-col">
+      <div className="relative group w-[350px] h-full flex flex-col">
         <Image
-          className="object-cover w-full h-72 "
+          className="object-fill  w-full h-72 "
           src={avatar ? avatar : DefaultDoctor}
           alt={name}
         />
@@ -152,12 +152,15 @@ const OurDoctors = () => {
           title="Meet Our Doctors"
           subtitle="Providing Expert Care for Your Health"
         />
-        <p className="text-center text-gray-700  text-lg md:text-xl">
+        <motion.p
+          variants={textVariant()}
+          className="text-center text-gray-700  text-lg md:text-xl"
+        >
           Our team of experienced doctors is dedicated to providing high-quality
           medical care and personalized treatment plans tailored to your needs.
           With a focus on excellence and compassion, we strive to ensure the
           well-being and satisfaction of every patient.
-        </p>
+        </motion.p>
       </div>
       <div className="flex items-center justify-center flex-wrap gap-10 ">
         {doctors.map((doctor, index) => (

@@ -79,7 +79,7 @@ const GetAppointment = () => {
   maxTime.setHours(21, 0); // Set maximum time to 9:00 PM
 
   return (
-    <div className="py-28">
+    <div className="w-full">
       <HeadTitle
         title="Book an appointment"
         subtitle="Want to consult with our doctors?"
@@ -208,6 +208,9 @@ const GetAppointment = () => {
             </option>
             <option className="text-black" value="Dr. Arbind Bhusal">
               Dr. Arbind Bhusal - Consultant Neuropsychiatrist
+            </option>
+            <option className="text-black" value="Dr. Suresh Maharjan">
+              Dr. Suresh Maharjan - General Surgery
             </option>
             <option className="text-black" value="Dr. Dipak Paudel">
               Dr. Dipak Paudel - Consultant Endocrinologist

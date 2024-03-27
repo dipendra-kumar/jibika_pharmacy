@@ -1,13 +1,14 @@
 import OurServices from "@/app/our-services/OurServices";
 import React from "react";
-import ContactUs from "@/app/contact-us/page";
+import ContactUs from "@/app/contact-us/ContactUs";
+import MainLayout from "@/hoc/MainLayout";
 
 const page = () => {
   return (
-    <>
-      <OurServices />;
+    <MainLayout>
+      <OurServices />
       <ContactUs />
-    </>
+    </MainLayout>
   );
 };
 
