@@ -1,0 +1,32 @@
+.dark {
+    --background: 224 71% 4%; /* Dark mode background color */
+    --foreground: 213 31% 91%; /* Dark mode foreground color */
+
+    --muted: 223 47% 11%; /* Dark mode muted color */
+    --muted-foreground: 215.4 16.3% 56.9%; /* Text color on dark mode muted */
+
+    --accent: 216 34% 17%; /* Dark mode accent color */
+    --accent-foreground: 210 40% 98%; /* Text color on dark mode accent */
+
+    --popover: 224 71% 4%; /* Dark mode popover background color */
+    --popover-foreground: 215 20.2% 65.1%; /* Text color on dark mode popover */
+
+    --border: 216 34% 17%; /* Dark mode border color */
+    --input: 216 34% 17%; /* Dark mode input field background color */
+
+    --card: 224 71% 4%; /* Dark mode card background color */
+    --card-foreground: 213 31% 91%; /* Text color on dark mode card */
+
+    --primary: 100 59.6% 40.8%; /* Dark mode primary color */
+    --primary-foreground: 300 100% 8.4%; /* Text color on dark mode primary */
+
+    --secondary: 230 96.9% 22.7%; /* Dark mode secondary color */
+    --secondary-foreground: 220 100% 98%; /* Text color on dark mode secondary */
+
+    --destructive: 0 63% 31%; /* Dark mode destructive color */
+    --destructive-foreground: 210 40% 98%; /* Text color on dark mode destructive */
+
+    --ring: 216 34% 17%; /* Dark mode ring color */
+
+    --radius: 0.5rem; /* Border radius */
+  }

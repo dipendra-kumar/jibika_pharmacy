@@ -7,11 +7,6 @@ const inter = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jibika Pharmacy & Health Clinic",
-  openGraph: {
-    title: "Jibika Pharmacy & Health Clinic",
-    description:
-      "Jibika Pharmacy  & Health Clinic is multi-speciality health clinic in Nepal.",
-  },
   description:
     "Jibika Pharmacy  & Health Clinic is multi-speciality health clinic in Nepal. ",
 };

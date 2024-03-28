@@ -1,19 +1,23 @@
 "use client";
 import InputField from "@/components/InputField";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
+
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import axios from "axios";
-import { checkLogin } from "@/actions/auth";
-interface LoginFormInput {
+import { registerAdmin } from "@/actions/auth";
+
+interface RegisterFormInput {
+  fullName: string;
   emailAddress: string;
   password: string;
+  address: string;
+  phoneNumber: string;
 }
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { toast } = useToast();
   const router = useRouter();
@@ -21,30 +25,18 @@ const Login: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormInput>();
+  } = useForm<RegisterFormInput>();
 
-  const loginCheck = async () => {
-    const isLoggedIn = await checkLogin();
-    console.log(isLoggedIn);
-    if (isLoggedIn.emailAddress) {
-      router.push("/admin/dashboard");
-    }
-  };
-  useEffect(() => {
-    loginCheck();
-  }, []);
-
-  const onSubmit = async (data: LoginFormInput) => {
+  const onSubmit = async (data: RegisterFormInput) => {
     try {
       setIsLoading(true);
-      await axios.post("http://localhost:3000/api/auth/login", data);
-
+      registerAdmin(data);
       setIsLoading(false);
       toast({
-        title: "Login success",
-        description: "Welcome to dashboard",
+        title: "Registration successful,",
+        description: "Welcome to dashboard.",
       });
-      router.push("/admin/dashboard");
+      // router.push("/");
     } catch (error: any) {
       setIsLoading(false);
 
@@ -55,19 +47,22 @@ const Login: React.FC = () => {
       });
     }
   };
-
-  //   const handleRegisterClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //     e.preventDefault();
-  //     // router.push("/signup");
-  //   };
-
   return (
     <div className="h-screen w-full bg-gray-100 flex flex-col justify-center py-12 sm:px-6 px-8">
       <div className="flex flex-col gap-10 mx-auto px-8 py-12 bg-white shadow rounded-lg md:px-10 w-full md:min-w-[385px] md:max-w-[500px]">
-        <h2 className=" text-center text-3xl font-extrabold text-gray-900">
+        <h2 className="text-center text-3xl font-extrabold text-gray-900">
           Jibika Pharmacy <br />& Health Clinic
         </h2>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <InputField
+            id="fullName"
+            label="Full Name"
+            type="text"
+            register={register}
+            error={errors.fullName}
+            required
+          />
+
           <InputField
             id="emailAddress"
             label="Email"
@@ -86,16 +81,24 @@ const Login: React.FC = () => {
             required
           />
 
-          <div className="flex items-center justify-end">
-            <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Forgot your password?
-              </a>
-            </div>
-          </div>
+          <InputField
+            id="address"
+            label="Address"
+            type="text"
+            register={register}
+            error={errors.address}
+            required
+          />
+
+          <InputField
+            id="phoneNumber"
+            label="Phone Number"
+            type="number"
+            register={register}
+            error={errors.phoneNumber}
+            required
+          />
+
           <div>
             <Button
               type="submit"
@@ -104,23 +107,13 @@ const Login: React.FC = () => {
               }`}
               disabled={isLoading}
             >
-              {isLoading ? <Loading /> : "Sign in"}
+              {isLoading ? <Loading /> : "Register"}
             </Button>
           </div>
-
-          {/* <div className="flex flex-col items-center justify-center text-gray-600">
-            <span className="text-sm">Don't have an account? </span>
-            <button
-              className="font-medium text-indigo-600 hover:text-indigo-500 bg-transparent"
-              onClick={handleRegisterClick}
-            >
-              Register here
-            </button>
-          </div> */}
         </form>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

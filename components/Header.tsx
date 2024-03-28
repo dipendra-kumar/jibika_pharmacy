@@ -120,7 +120,7 @@ const Header = () => {
             <HeaderLink linkTitle="Our Doctors" linkTo="our-doctors" />
             <HeaderLink linkTitle="Contact Us" linkTo="contact-us" />
             <Link href="get-appointment">
-              <button className="border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-light">
+              <button className="border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-primary-foreground">
                 Get Appointment
               </button>
             </Link>
@@ -160,7 +160,7 @@ const Header = () => {
                   onClick={handleSidebarClose}
                 />
                 <Link href="get-appointment">
-                  <button className="border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-light">
+                  <button className="border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-primary-foreground">
                     Get Appointment
                   </button>
                 </Link>

@@ -3,7 +3,7 @@ import React from "react";
 
 const UnderDevelopment: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white w-full">
       <div className="text-center">
         <h1 className="text-4xl font-bold text-green-800 mb-4">
           Under Development

@@ -1,3 +1,131 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47.4% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 222 47.4% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 222 47.4% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 131, 76%, 36%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 218, 90%, 23%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%; /* Dark mode background color */
+    --foreground: 213 31% 91%; /* Dark mode foreground color */
+
+    --muted: 223 47% 11%; /* Dark mode muted color */
+    --muted-foreground: 215.4 16.3% 56.9%; /* Text color on dark mode muted */
+
+    --accent: 216 34% 17%; /* Dark mode accent color */
+    --accent-foreground: 210 40% 98%; /* Text color on dark mode accent */
+
+    --popover: 224 71% 4%; /* Dark mode popover background color */
+    --popover-foreground: 215 20.2% 65.1%; /* Text color on dark mode popover */
+
+    --border: 216 34% 17%; /* Dark mode border color */
+    --input: 216 34% 17%; /* Dark mode input field background color */
+
+    --card: 224 71% 4%; /* Dark mode card background color */
+    --card-foreground: 213 31% 91%; /* Text color on dark mode card */
+
+    --primary: 100 59.6% 40.8%; /* Dark mode primary color */
+    --primary-foreground: 300 100% 8.4%; /* Text color on dark mode primary */
+
+    --secondary: 230 96.9% 22.7%; /* Dark mode secondary color */
+    --secondary-foreground: 220 100% 98%; /* Text color on dark mode secondary */
+
+    --destructive: 0 63% 31%; /* Dark mode destructive color */
+    --destructive-foreground: 210 40% 98%; /* Text color on dark mode destructive */
+
+    --ring: 216 34% 17%; /* Dark mode ring color */
+
+    --radius: 0.5rem; /* Border radius */
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+input[type="password"] {
+  font-family: Verdana;
+  letter-spacing: 0.12em;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

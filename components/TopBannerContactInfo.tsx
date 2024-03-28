@@ -14,20 +14,20 @@ import {
 const TopBannerContactInfo: React.FC = () => {
   return (
     <div className="lg:flex sticky items-center justify-between w-full h-fit hidden px-12 py-1 bg-primary z-30">
-      <div className="flex gap-5 ">
+      <div className="flex gap-5 text-primary-foreground">
         <div className="flex items-center py-3">
-          <FaMapMarkerAlt className="text-light" />
-          <p className="ml-2 text-dark ">Buddhanagar-10, Kathmandu, Nepal</p>
+          <FaMapMarkerAlt />
+          <p className="ml-2 ">Buddhanagar-10, Kathmandu, Nepal</p>
         </div>
         <div className="flex items-center py-3">
-          <FaClock className="text-light" />
-          <p className="ml-2 text-dark ">Sun - Sat : 06.00 AM - 10.00 PM</p>
+          <FaClock />
+          <p className="ml-2 ">Sun - Sat : 06.00 AM - 10.00 PM</p>
         </div>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center text-primary-foreground ">
         <div className="flex items-center mr-4">
-          <FaPhoneAlt className="text-light" />
-          <p className="ml-2 text-dark">+977-9851047834</p>
+          <FaPhoneAlt />
+          <p className="ml-2 ">+977-9851047834</p>
         </div>
         <div className="flex items-center justify-center gap-2">
           <a

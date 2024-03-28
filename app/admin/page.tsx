@@ -1,8 +1,21 @@
-import UnderDevelopment from "@/components/UnderDevelopment";
-import React from "react";
+"use client";
 
-const page = () => {
-  return <UnderDevelopment />;
+import { checkLogin } from "@/actions/auth";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+
+const Page = () => {
+  const router = useRouter();
+  const loginCheck = async () => {
+    const isLoggedIn = await checkLogin();
+    if (isLoggedIn) {
+      router.push("/admin/dashboard");
+    }
+  };
+  useEffect(() => {
+    loginCheck();
+  }, []);
+  return <div></div>;
 };
 
-export default page;
+export default Page;
