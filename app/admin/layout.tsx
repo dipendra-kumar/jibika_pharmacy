@@ -6,20 +6,23 @@ import React, { useEffect, useState } from "react";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const checkUser = async () => {
     const session = await checkLogin();
     if (!session) {
+      setIsLoggedIn(false);
       return router.push("/admin/login");
     }
+    setIsLoggedIn(true);
   };
   useEffect(() => {
     checkUser();
   }, []);
 
   return (
-    <div className="flex w-full h-screen overflow-hidden">
-      <AdminSidebar />
+    <div className="flex h-screen w-full overflow-hidden">
+      {isLoggedIn && <AdminSidebar />}
       {children}
     </div>
   );

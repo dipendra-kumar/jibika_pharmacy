@@ -1,6 +1,14 @@
 "use client";
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState, ReactNode } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
+import { FaKey, FaSignOutAlt, FaUser } from "react-icons/fa";
 
 interface SidebarContextType {
   expanded: boolean;
@@ -13,8 +21,8 @@ export default function Sidebar({ children }: { children: ReactNode }) {
 
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-white border-r shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center">
+      <nav className="flex h-full flex-col border-r bg-white shadow-sm">
+        <div className="flex items-center justify-between p-4 pb-2">
           <>
             {expanded && (
               <span className="text-xl font-bold text-secondary">Jibika</span>
@@ -22,28 +30,28 @@ export default function Sidebar({ children }: { children: ReactNode }) {
           </>
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
+            className="rounded-lg bg-gray-50 p-1.5 hover:bg-gray-100"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
         </div>
 
         <SidebarContext.Provider value={{ expanded }}>
-          <ul className="flex-1 px-3 py-10 items-center justify-center">
+          <ul className="flex-1 items-center justify-center px-3 py-10">
             {children}
           </ul>
         </SidebarContext.Provider>
 
-        <div className="border-t flex p-3">
+        <div className="flex border-t p-3">
           <img
             src="https://ui-avatars.com/api/?name=Jibika+Pharmacy&background=c7d2fe&color=3730a3&bold=true"
             alt=""
-            className="w-10 h-10 rounded-md"
+            className="h-10 w-10 rounded-md"
           />
           <div
             className={`
-              flex justify-between items-center
-              overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"}
+              flex items-center justify-between
+              overflow-hidden transition-all ${expanded ? "ml-3 w-52" : "w-0"}
           `}
           >
             <div className="leading-4">
@@ -52,7 +60,28 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                 jibikapharmacy@gmail.com
               </span>
             </div>
-            <MoreVertical size={20} />
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Button className="h-8 w-8 rounded-full bg-white p-1 text-lg text-black duration-300 hover:bg-[#f5f5f4]">
+                  <MoreVertical size={20} />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem className="cursor-pointer">
+                  <FaUser className="mr-2" /> Account Info
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer">
+                  <FaKey className="mr-2" />
+                  Change Password
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="cursor-pointer "
+                  // onClick={handleLogout}
+                >
+                  <FaSignOutAlt className="mr-2" /> Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </nav>
@@ -84,13 +113,13 @@ export function SidebarItem({
   return (
     <li
       className={`
-        relative w-full flex items-center py-2 px-3 my-1
-        font-medium rounded-md cursor-pointer text-lg
-        transition-colors group
+        group relative my-1 flex w-full cursor-pointer items-center
+        rounded-md px-3 py-2 text-lg
+        font-medium transition-colors
         ${
           active
             ? "bg-primary text-primary-foreground"
-            : "hover:bg-muted text-gray-600"
+            : "text-gray-600 hover:bg-muted"
         }
     `}
       onClick={handleClick}
@@ -98,14 +127,14 @@ export function SidebarItem({
       {icon}
       <span
         className={`overflow-hidden transition-all ${
-          expanded ? "w-52 ml-3" : "w-0"
+          expanded ? "ml-3 w-52" : "w-0"
         }`}
       >
         {text}
       </span>
       {alert && (
         <div
-          className={`absolute right-2 w-2 h-2 rounded bg-dark ${
+          className={`bg-dark absolute right-2 h-2 w-2 rounded ${
             expanded ? "" : "top-2"
           }`}
         />
@@ -114,10 +143,10 @@ export function SidebarItem({
       {!expanded && (
         <div
           className={`
-          absolute left-full rounded-md px-2 py-1 ml-6
-         bg-primary text-primary-foreground text-sm
-          invisible opacity-20 -translate-x-3 transition-all
-          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
+          invisible absolute left-full ml-6 -translate-x-3 rounded-md
+         bg-primary px-2 py-1
+          text-sm text-primary-foreground opacity-20 transition-all
+          group-hover:visible group-hover:translate-x-0 group-hover:opacity-100
       `}
         >
           {text}
