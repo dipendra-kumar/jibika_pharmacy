@@ -18,7 +18,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <div className="flex w-full h-screen ">
+    <div className="flex w-full h-screen overflow-hidden">
       <AdminSidebar />
       {children}
     </div>

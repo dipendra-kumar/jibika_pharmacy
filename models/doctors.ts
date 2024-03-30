@@ -6,27 +6,20 @@ export interface IDoctors {
   qualification: string;
   designation: string;
   workPlace: string;
-  extraAttributes: string[];
+  extraAttributes: string;
 }
 const DoctorSchema = new Schema<IDoctors>(
   {
-    profileImage: String,
-    name: String,
-    qualification: String,
-    designation: String,
-    workPlace: String,
-    extraAttributes: [String],
+    profileImage: { type: String, required: true },
+    name: { type: String, required: true },
+    qualification: { type: String, required: true },
+    designation: { type: String, required: true },
+    workPlace: { type: String, required: true },
+    extraAttributes: { type: String },
   },
   {
     timestamps: true,
-    toJSON: {
-      versionKey: false,
-      virtuals: true,
-      transform: (_, ret) => {
-        delete ret._id;
-      },
-    },
   }
 );
-const doctorModel = models.Product || model("Doctor", DoctorSchema);
+const doctorModel = models.Doctor || model("Doctor", DoctorSchema);
 export default doctorModel;

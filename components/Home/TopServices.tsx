@@ -32,7 +32,7 @@ const HomeServiceCard: React.FC<Service> = ({
   return (
     <motion.div
       variants={fadeIn("up", "spring", index * 0.5, 1)}
-      className="block rounded-lg bg-dark shadow-sm min-h-[325px] min-w-[200px] text-black"
+      className="block rounded-lg bg-muted shadow-sm min-h-[325px] min-w-[200px] text-black"
     >
       <div className="flex items-center justify-center h-52 text-secondary">
         {icon}

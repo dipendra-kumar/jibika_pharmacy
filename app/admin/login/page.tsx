@@ -2,12 +2,12 @@
 import InputField from "@/components/InputField";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import axios from "axios";
 import { checkLogin } from "@/actions/auth";
+import { axiosClient } from "@/lib/axios";
 interface LoginFormInput {
   emailAddress: string;
   password: string;
@@ -25,8 +25,7 @@ const Login: React.FC = () => {
 
   const loginCheck = async () => {
     const isLoggedIn = await checkLogin();
-    console.log(isLoggedIn);
-    if (isLoggedIn.emailAddress) {
+    if (isLoggedIn?.emailAddress) {
       router.push("/admin/dashboard");
     }
   };
@@ -37,8 +36,7 @@ const Login: React.FC = () => {
   const onSubmit = async (data: LoginFormInput) => {
     try {
       setIsLoading(true);
-      await axios.post("http://localhost:3000/api/auth/login", data);
-
+      await axiosClient.post("/auth/login", data);
       setIsLoading(false);
       toast({
         title: "Login success",

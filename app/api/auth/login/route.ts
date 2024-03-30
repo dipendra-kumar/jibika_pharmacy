@@ -1,4 +1,3 @@
-import { generateJwtToken } from "@/helpers";
 import userModel from "@/models/user";
 import connectMongo from "@/utils/connect-mongo";
 import bcrypt from "bcrypt";
@@ -15,7 +14,7 @@ export async function POST(req: Request, res: Response) {
       },
       {
         status: 400,
-      }
+      },
     );
   }
 
@@ -29,7 +28,7 @@ export async function POST(req: Request, res: Response) {
         },
         {
           status: 400,
-        }
+        },
       );
     }
 
@@ -41,7 +40,7 @@ export async function POST(req: Request, res: Response) {
         },
         {
           status: 401,
-        }
+        },
       );
     }
 
@@ -72,7 +71,7 @@ export async function POST(req: Request, res: Response) {
       },
       {
         status: 500,
-      }
+      },
     );
   }
 }

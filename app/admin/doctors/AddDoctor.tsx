@@ -1,56 +1,65 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Plus } from "lucide-react";
+import { useState } from "react";
+import { toast } from "@/components/ui/use-toast";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store/store";
+import { addDoctor } from "@/store/slices/doctorSlice";
+import DoctorForm from "./DoctorForm";
+import { IDoctorProfile } from "@/components/DoctorProfileCard";
+
 function AddDoctor() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleFormSubmit = async (data: IDoctorProfile) => {
+    try {
+      await dispatch(addDoctor(data));
+      toast({
+        title: "New doctor added",
+      });
+      setIsModalOpen(false);
+    } catch (error) {
+      toast({
+        title: "Error adding the doctor",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
-    <Dialog>
+    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTrigger asChild>
-        <Button className="flex gap-2" variant="outline">
+        <Button
+          className=" flex gap-2 border border-primary bg-primary-foreground font-bold hover:bg-primary hover:text-primary-foreground"
+          variant="outline"
+          onClick={() => setIsModalOpen(true)}
+        >
           <Plus /> <span> Add Doctor </span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent
+        className="sm:max-w-[425px]"
+        onInteractOutside={(e) => {
+          e.preventDefault();
+        }}
+      >
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Add a Doctor</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Enter the details for the doctor
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input
-              id="username"
-              defaultValue="@peduarte"
-              className="col-span-3"
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit"> Add Doctor</Button>
-        </DialogFooter>
+        <DoctorForm onSubmit={handleFormSubmit} />
       </DialogContent>
     </Dialog>
   );

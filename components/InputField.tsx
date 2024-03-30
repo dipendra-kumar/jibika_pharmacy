@@ -25,14 +25,16 @@ const InputField: React.FC<InputProps> = ({
   errorMessage,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
   return (
     <div className="flex flex-col gap-2">
-      <Label htmlFor={id}>{label}</Label>
+      <Label htmlFor={id} className="flex gap-1">
+        {label}
+        {required && <span className="text-red-500">*</span>}
+      </Label>
       <div className="relative">
         <Input
           id={id}
@@ -43,7 +45,7 @@ const InputField: React.FC<InputProps> = ({
               : false,
           })}
           type={showPassword ? "text" : type}
-          className={`appearance-none block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none sm:text-sm text-gray-800 ${
+          className={`block w-full appearance-none rounded-md border px-3 py-2 text-gray-800 shadow-sm focus:outline-none sm:text-sm ${
             showPassword ? "text-xl" : ""
           }`}
         />
@@ -58,7 +60,7 @@ const InputField: React.FC<InputProps> = ({
           </button>
         )}
       </div>
-      {error && <p className="text-red-500 text-xs italic">{error.message}</p>}
+      {error && <p className="text-xs italic text-red-500">{error.message}</p>}
     </div>
   );
 };
