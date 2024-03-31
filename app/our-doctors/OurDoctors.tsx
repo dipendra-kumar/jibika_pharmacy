@@ -26,10 +26,6 @@ const OurDoctors: React.FC = () => {
     };
   }, [doctors]);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <div className="my-40 px-1 md:px-40">
       <div className="flex w-full flex-col items-center justify-center gap-5 p-5 lg:px-10 ">
@@ -37,15 +33,12 @@ const OurDoctors: React.FC = () => {
           title="Meet Our Doctors"
           subtitle="Providing Expert Care for Your Health"
         />
-        <motion.p
-          variants={textVariant()}
-          className="text-center text-lg text-gray-700 md:text-xl"
-        >
+        <p className="text-center text-lg text-gray-700 md:text-xl">
           Our team of experienced doctors is dedicated to providing high-quality
           medical care and personalized treatment plans tailored to your needs.
           With a focus on excellence and compassion, we strive to ensure the
           well-being and satisfaction of every patient.
-        </motion.p>
+        </p>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-10 ">
         {doctors &&
