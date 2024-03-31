@@ -20,7 +20,7 @@ const HeaderLink = ({
 }) => {
   const pathName = usePathname();
   const [currentPath, setCurrentPath] = useState<string>(
-    pathName.split("/")[1] || "home"
+    pathName.split("/")[1] || "home",
   );
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const HeaderLink = ({
   }, [pathName]);
   return (
     <Link
-      href={linkTo}
+      href={linkTo === "home" ? "/" : linkTo}
       className={`duration-300 hover:text-green-500 ${
         currentPath === linkTo ? "font-bold text-green-500" : ""
       }`}
@@ -85,16 +85,16 @@ const Header = () => {
       <motion.div
         className={` ${
           isFixed ? "fixed top-0 " : " absolute bg-opacity-90 "
-        }  z-50 w-full h-28 flex items-center justify-center cursor-default duration-300 transition-all bg-white shadow-lg`}
+        }  z-50 flex h-28 w-full cursor-default items-center justify-center bg-white shadow-lg transition-all duration-300`}
       >
-        <div className="relative w-[90%] flex items-center justify-end">
+        <div className="relative flex w-[90%] items-center justify-end">
           <Link
             href=""
-            className="flex items-center gap-3 absolute -left-1  justify-center "
+            className="absolute -left-1 flex items-center justify-center  gap-3 "
           >
             <div className="flex items-center justify-center p-2">
               <Image
-                className="w-24 h-24 rounded-full shadow-2xl md:shadow-none  "
+                className="h-24 w-24 rounded-full shadow-2xl md:shadow-none  "
                 src={PharmaLogo}
                 alt="pharmacy_logo"
                 width={200}
@@ -103,24 +103,24 @@ const Header = () => {
             </div>
             <div className="flex flex-col items-center justify-center">
               <h1
-                className={`text-2xl md:text-3xl text-[#062d71] tracking-normal md:tracking-wider font-extrabold text-center md:text-left drop-shadow-2xl`}
+                className={`text-center text-2xl font-extrabold tracking-normal text-[#062d71] drop-shadow-2xl md:text-left md:text-3xl md:tracking-wider`}
               >
                 Jibika Pharmacy <br />
               </h1>
-              <h2 className="text-green-600 text-2xl tracking-wider font-extrabold text-center">
+              <h2 className="text-center text-2xl font-extrabold tracking-wider text-green-600">
                 & Health Clinic
               </h2>
             </div>
           </Link>
 
           {/* desktop nav bar */}
-          <div className="gap-5 text-sm md:text-xl  pr-10 text-[#062d71] hidden lg:flex items-center">
+          <div className="hidden items-center gap-5  pr-10 text-sm text-[#062d71] md:text-xl lg:flex">
             <HeaderLink linkTitle="Home" linkTo="home" />
             <HeaderLink linkTitle="Our Services" linkTo="our-services" />
             <HeaderLink linkTitle="Our Doctors" linkTo="our-doctors" />
             <HeaderLink linkTitle="Contact Us" linkTo="contact-us" />
             <Link href="get-appointment">
-              <button className="border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-primary-foreground">
+              <button className="border bg-primary px-10 py-5 text-lg font-bold text-primary-foreground duration-300 hover:bg-secondary">
                 Get Appointment
               </button>
             </Link>
@@ -131,9 +131,9 @@ const Header = () => {
               <HiBars3BottomRight className="text-4xl text-secondary" />
             </button>
             {isOpen && (
-              <div className="fixed inset-y-0 right-0 bg-white w-3/4 md:w-1/2 z-50 p-10 flex flex-col gap-10 font-semibold justify-center items-center text-2xl">
+              <div className="fixed inset-y-0 right-0 z-50 flex w-3/4 flex-col items-center justify-center gap-10 bg-white p-10 text-2xl font-semibold md:w-1/2">
                 <button
-                  className="absolute top-6 right-6 p-2"
+                  className="absolute right-6 top-6 p-2"
                   onClick={handleSidebarClose}
                 >
                   <HiXCircle className="text-2xl text-secondary" size={42} />
@@ -160,7 +160,7 @@ const Header = () => {
                   onClick={handleSidebarClose}
                 />
                 <Link href="get-appointment">
-                  <button className="border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-primary-foreground">
+                  <button className="border bg-primary px-10 py-5 text-lg font-bold text-primary-foreground duration-300 hover:bg-secondary">
                     Get Appointment
                   </button>
                 </Link>
