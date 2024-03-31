@@ -3,7 +3,8 @@ import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import StoreProvider from "./StoreProvider";
-
+import { NextSeo } from "next-seo";
+import SEO from "@/next-seo.config";
 const inter = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
           content="Sl4FdDRb7PwUmSkfVwWoJIDu4zYOI7wuSvthwJoNjYU"
         />
       </head>
+      <NextSeo {...SEO} />
       <body className={`${inter.className} h-screen w-full bg-white`}>
         <StoreProvider>
           {children}
