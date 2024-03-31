@@ -30,24 +30,24 @@ const DoctorProfileCard: React.FC<IDoctorProfile> = ({
   };
   return (
     <motion.div
-      className="shadow-md border rounded-xl bg-white  overflow-hidden  min-w-[350px] min-h-[520px] max-h-[500px] flex flex-col"
-      variants={fadeIn("up", "tween", index * 0.25, 0.75)}
+      className="flex max-h-[500px] min-h-[520px] min-w-[350px]  flex-col  overflow-hidden rounded-xl border bg-white shadow-md"
+      variants={fadeIn("up", "spring", index * 0.1, 0.5)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.1 }}
       onClick={handleClick}
     >
-      <div className="relative group w-[350px] h-full flex flex-col">
+      <div className="group relative flex h-full w-[350px] flex-col">
         <Image
-          className="object-fill h-80 "
+          className="h-80 object-fill "
           src={profileImage ? profileImage : DefaultDoctor}
           alt={name}
           height={500}
           width={500}
         />
-        <div className="px-4 py-6  flex flex-col  text-left">
+        <div className="flex flex-col  px-4 py-6  text-left">
           <h5 className="mb-1 text-xl font-bold">{name}</h5>
-          <p className="text-sm text-[#069e32] font-semibold mb-2">
+          <p className="mb-2 text-sm font-semibold text-[#069e32]">
             {designation}
           </p>
           <p className="text-sm text-gray-500">{workPlace}</p>

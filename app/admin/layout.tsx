@@ -18,7 +18,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   };
   useEffect(() => {
     checkUser();
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <div className="flex h-screen w-full overflow-hidden">

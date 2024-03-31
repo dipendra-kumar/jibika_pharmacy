@@ -1,17 +1,19 @@
-"use client";
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
+import { redirect } from "next/navigation";
 import MainLayout from "@/hoc/MainLayout";
+import UnderDevelopment from "@/components/UnderDevelopment";
 
 const page = () => {
-  const router = useRouter();
-  useEffect(() => {
-    router.push("/");
-  }, []);
+  const redirectToLanding = () => {
+    return redirect("/");
+  };
+
+  redirectToLanding();
+
   return (
-    <MainLayout>
-      <div></div>
-    </MainLayout>
+    <div>
+      <UnderDevelopment />
+    </div>
   );
 };
 

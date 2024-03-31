@@ -15,24 +15,24 @@ const montserrat = Montserrat({
 });
 const Hero = () => {
   return (
-    <div className="flex flex-col justify-between h-screen">
-      <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2e2e2e] to-transparent z-0"></div>
+    <div className="flex h-screen flex-col justify-between">
+      <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#2e2e2e] to-transparent"></div>
 
         {/* Heading */}
         <motion.h2
           variants={zoomIn(0.3, 0.7)}
-          className={`${montserrat.className} text-center text-white text-4xl sm:text-6xl lg:text-8xl font-extrabold uppercase tracking-wider relative z-10`}
+          className={`${montserrat.className} relative z-10 text-center text-4xl font-extrabold uppercase tracking-wider text-white sm:text-6xl lg:text-8xl`}
         >
           Your Local Neighbourhood Pharmacy
         </motion.h2>
       </div>
-      <div className="absolute -z-30 w-full h-full overflow-hidden">
-        <div className="w-full h-full">
+      <div className="absolute -z-30 h-full w-full overflow-hidden">
+        <div className="h-full w-full">
           <Image
             src={main_section_img}
             alt="main-section-image"
-            className="object-cover w-full h-full transition-opacity opacity-0 duration-[1s]"
+            className="duration-1000] h-full w-full object-cover opacity-0 transition-opacity"
             onLoad={(event) =>
               event.currentTarget.classList.remove("opacity-0")
             }
@@ -41,7 +41,7 @@ const Hero = () => {
       </div>
 
       <Link href="get-appointment">
-        <button className=" flex lg:hidden absolute left-1/2 bottom-10 transform -translate-x-1/2 border bg-primary px-10 py-5 hover:bg-secondary duration-300 font-bold text-lg text-light rounded-full ">
+        <button className=" absolute bottom-10 left-1/2 flex -translate-x-1/2 transform rounded-full border bg-primary px-10 py-5 text-lg font-bold text-primary-foreground duration-300 hover:bg-secondary lg:hidden ">
           Shedule Appointment
         </button>
       </Link>

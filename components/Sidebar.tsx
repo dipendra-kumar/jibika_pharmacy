@@ -23,11 +23,10 @@ export default function Sidebar({ children }: { children: ReactNode }) {
     <aside className="h-screen">
       <nav className="flex h-full flex-col border-r bg-white shadow-sm">
         <div className="flex items-center justify-between p-4 pb-2">
-          <>
-            {expanded && (
-              <span className="text-xl font-bold text-secondary">Jibika</span>
-            )}
-          </>
+          {expanded && (
+            <span className="text-xl font-bold text-secondary">Jibika</span>
+          )}
+
           <button
             onClick={() => setExpanded((curr) => !curr)}
             className="rounded-lg bg-gray-50 p-1.5 hover:bg-gray-100"
@@ -45,7 +44,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
         <div className="flex border-t p-3">
           <img
             src="https://ui-avatars.com/api/?name=Jibika+Pharmacy&background=c7d2fe&color=3730a3&bold=true"
-            alt=""
+            alt="jplogo"
             className="h-10 w-10 rounded-md"
           />
           <div
@@ -62,9 +61,9 @@ export default function Sidebar({ children }: { children: ReactNode }) {
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <Button className="h-8 w-8 rounded-full bg-white p-1 text-lg text-black duration-300 hover:bg-[#f5f5f4]">
+                <ul className="h-8 w-8 rounded-full bg-white p-1 text-lg text-black duration-300 hover:bg-[#f5f5f4]">
                   <MoreVertical size={20} />
-                </Button>
+                </ul>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem className="cursor-pointer">
