@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/hoc";
 import { textVariant } from "@/utils/motion";
@@ -7,34 +7,39 @@ import HeadTitle from "../../components/HeadTitle";
 import DoctorProfileCard, {
   IDoctorProfile,
 } from "@/components/DoctorProfileCard";
-import { axiosClient } from "@/lib/axios";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import Loading from "@/components/Loading";
+import { fetchDoctors } from "@/store/slices/doctorSlice";
 
 const OurDoctors: React.FC = () => {
-  const [doctors, setDoctors] = useState<IDoctorProfile[] | null>(null);
-
-  const fetchDoctors = async () => {
-    try {
-      const response = await axiosClient.get("/doctors");
-      setDoctors(response?.data?.message);
-    } catch (error) {
-      console.error("Error fetching doctors:", error);
-    }
-  };
-
+  const doctorRef = useRef(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const doctors = useSelector((state: RootState) => state.doctors.data);
+  const loading = useSelector((state: RootState) => state.doctors.loading);
   useEffect(() => {
-    fetchDoctors();
-  }, []);
+    if (doctorRef.current === false) {
+      dispatch(fetchDoctors());
+    }
+    return () => {
+      doctorRef.current = true;
+    };
+  }, [doctors]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
-    <div className="md:px-40 px-1 my-40">
-      <div className="w-full flex flex-col items-center justify-center p-5 lg:px-10 gap-5 ">
+    <div className="my-40 px-1 md:px-40">
+      <div className="flex w-full flex-col items-center justify-center gap-5 p-5 lg:px-10 ">
         <HeadTitle
           title="Meet Our Doctors"
           subtitle="Providing Expert Care for Your Health"
         />
         <motion.p
           variants={textVariant()}
-          className="text-center text-gray-700 text-lg md:text-xl"
+          className="text-center text-lg text-gray-700 md:text-xl"
         >
           Our team of experienced doctors is dedicated to providing high-quality
           medical care and personalized treatment plans tailored to your needs.
@@ -42,7 +47,7 @@ const OurDoctors: React.FC = () => {
           well-being and satisfaction of every patient.
         </motion.p>
       </div>
-      <div className="flex items-center justify-center flex-wrap gap-10 ">
+      <div className="flex flex-wrap items-center justify-center gap-10 ">
         {doctors &&
           doctors.map((doctor: IDoctorProfile, index: number) => (
             <DoctorProfileCard

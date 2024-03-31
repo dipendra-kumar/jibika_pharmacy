@@ -31,7 +31,7 @@ const DoctorProfileCard: React.FC<IDoctorProfile> = ({
   return (
     <motion.div
       className="flex max-h-[500px] min-h-[520px] min-w-[350px]  flex-col  overflow-hidden rounded-xl border bg-white shadow-md"
-      variants={fadeIn("up", "spring", index * 0.1, 0.5)}
+      variants={fadeIn("up", "spring", index * 0.2, 1)}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
