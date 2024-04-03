@@ -11,12 +11,12 @@ const MainLayout = ({
   className?: string;
 }) => {
   return (
-    <span>
+    <>
       <TopBannerContactInfo />
       <Header />
       <div className={className}>{children}</div>
       <Footer />
-    </span>
+    </>
   );
 };
 

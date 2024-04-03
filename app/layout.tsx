@@ -23,6 +23,22 @@ export default function RootLayout({
           name="google-site-verification"
           content="Sl4FdDRb7PwUmSkfVwWoJIDu4zYOI7wuSvthwJoNjYU"
         />
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "Jibika Pharmacy & Health Clinic",
+            "url": "https://www.jibikapharmacy.com",
+            "logo": "https://www.jibikapharmacy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpharmacy_logo.472561c9.jpg&w=256&q=75",
+            "sameAs": [
+              "https://www.facebook.com/jibikapharmacy/",
+              "https://twitter.com/jibikapharmacy?t=dVEtJqFDZoxFRgsrUGFZqQ",
+              "https://www.instagram.com/jibika_pharmacy/"
+            ]
+          }
+          `}
+        </script>
       </head>
       <body className={`${inter.className} h-screen w-full bg-white`}>
         <StoreProvider>
