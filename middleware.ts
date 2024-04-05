@@ -2,7 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { updateSession } from "./lib/lib";
 
 export async function middleware(request: NextRequest) {
-  const exceptionRoutes = ["/admin/login", "/admin/register"];
+  const exceptionRoutes = [
+    "/admin/login",
+    "/admin/register",
+    "/home",
+    "/",
+    "/our-services",
+    "/our-doctors",
+    "/contact-us",
+    "/get-appointment",
+  ];
   const isLoginOrRegisterRoute = exceptionRoutes.includes(
     request.nextUrl.pathname,
   );
@@ -13,5 +22,5 @@ export async function middleware(request: NextRequest) {
   return await updateSession(request);
 }
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)", "/admin"],
+  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
 };
