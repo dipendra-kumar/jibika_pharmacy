@@ -7,8 +7,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Button } from "./ui/button";
 import { FaKey, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { Button } from "./ui/button";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { logoutSession } from "@/store/slices/authSlice";
+import { useRouter } from "next/navigation";
+import Loading from "./Loading";
 
 interface SidebarContextType {
   expanded: boolean;
@@ -17,14 +22,30 @@ interface SidebarContextType {
 const SidebarContext = createContext<SidebarContextType>({ expanded: true });
 
 export default function Sidebar({ children }: { children: ReactNode }) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [expanded, setExpanded] = useState<boolean>(true);
+  const { user } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
+  const handleLogout = async () => {
+    try {
+      setIsLoading(true);
+      await dispatch(logoutSession());
+      router.push("/admin/login");
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <aside className="h-screen">
       <nav className="flex h-full flex-col border-r bg-white shadow-sm">
         <div className="flex items-center justify-between p-4 pb-2">
           {expanded && (
-            <span className="text-xl font-bold text-secondary">Jibika</span>
+            <span className="text-xl font-bold text-secondary">
+              Jibika Pharmacy
+            </span>
           )}
 
           <button
@@ -41,48 +62,56 @@ export default function Sidebar({ children }: { children: ReactNode }) {
           </ul>
         </SidebarContext.Provider>
 
-        <div className="flex border-t p-3">
-          <img
-            src="https://ui-avatars.com/api/?name=Jibika+Pharmacy&background=c7d2fe&color=3730a3&bold=true"
-            alt="jplogo"
-            className="h-10 w-10 rounded-md"
-          />
-          <div
-            className={`
+        {user && (
+          <div className="flex border-t p-3">
+            <img
+              src="https://ui-avatars.com/api/?name=Jibika+Pharmacy&background=c7d2fe&color=3730a3&bold=true"
+              alt="jplogo"
+              className="h-10 w-10 rounded-md"
+            />
+            <div
+              className={`
               flex items-center justify-between
               overflow-hidden transition-all ${expanded ? "ml-3 w-52" : "w-0"}
           `}
-          >
-            <div className="leading-4">
-              <h4 className="font-semibold">Jibika Pharmacy</h4>
-              <span className="text-xs text-gray-600">
-                jibikapharmacy@gmail.com
-              </span>
+            >
+              <div className="leading-4">
+                <h4 className="font-semibold">{user.fullName}</h4>
+                <span className="text-xs text-gray-600">
+                  {user.emailAddress}
+                </span>
+              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <ul className="h-8 w-8 rounded-full bg-white p-1 text-lg text-black duration-300 hover:bg-[#f5f5f4]">
+                    <MoreVertical size={20} />
+                  </ul>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="space-y-1">
+                  <DropdownMenuItem className="cursor-pointer p-3">
+                    <FaUser className="mr-2" /> Account Info
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer p-3">
+                    <FaKey className="mr-2" />
+                    Change Password
+                  </DropdownMenuItem>
+                  <Button
+                    className="flex w-full cursor-pointer items-center justify-center bg-red-600 p-3 text-center text-white hover:bg-red-700 "
+                    onClick={handleLogout}
+                  >
+                    {isLoading ? (
+                      <Loading />
+                    ) : (
+                      <span className="flex w-full items-center justify-start">
+                        <FaSignOutAlt className="mr-2" /> Logout{" "}
+                      </span>
+                    )}
+                  </Button>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <ul className="h-8 w-8 rounded-full bg-white p-1 text-lg text-black duration-300 hover:bg-[#f5f5f4]">
-                  <MoreVertical size={20} />
-                </ul>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem className="cursor-pointer">
-                  <FaUser className="mr-2" /> Account Info
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <FaKey className="mr-2" />
-                  Change Password
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className="cursor-pointer "
-                  // onClick={handleLogout}
-                >
-                  <FaSignOutAlt className="mr-2" /> Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
-        </div>
+        )}
       </nav>
     </aside>
   );

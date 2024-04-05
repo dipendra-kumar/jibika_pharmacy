@@ -6,7 +6,7 @@ import { encrypt } from "@/lib/lib";
 import { cookies } from "next/headers";
 
 export async function POST(req: Request, res: Response) {
-  const { emailAddress, password } = await req.json();
+  const { emailAddress, password, LOGIN_TYPE } = await req.json();
   if (!emailAddress || !password) {
     return NextResponse.json(
       {
@@ -44,6 +44,17 @@ export async function POST(req: Request, res: Response) {
       );
     }
 
+    if (LOGIN_TYPE === "admin" && !user.isAdmin) {
+      return NextResponse.json(
+        {
+          message: "You are not authorized to access the page.",
+        },
+        {
+          status: 403,
+        },
+      );
+    }
+
     // Create the session
     const { fullName, address, phoneNumber } = user;
     const expires = new Date(Date.now() + 30 * 60 * 1000);
@@ -56,10 +67,13 @@ export async function POST(req: Request, res: Response) {
     });
 
     // Save the session in a cookie
-    cookies().set("session", session, { expires, httpOnly: true });
+    cookies().set("session", session, {
+      expires,
+      httpOnly: process.env.NODE_ENV === "production",
+    });
 
     const response = {
-      message: "Authenticated!",
+      message: "Welcome " + fullName.split(" ")[0],
     };
     return NextResponse.json(JSON.stringify(response), {
       status: 200,

@@ -3,17 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/motion";
 import { DefaultDoctor } from "@/assets";
-
-export interface IDoctorProfile {
-  index: number;
-  profileImage?: string;
-  name: string;
-  designation: string;
-  qualification: string;
-  extraAttributes: string;
-  workPlace?: string;
-  onSelect?: () => void;
-}
+import { IDoctorProfile } from "@/@types";
 
 const DoctorProfileCard: React.FC<IDoctorProfile> = ({
   index,

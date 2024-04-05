@@ -5,14 +5,13 @@ import {
   LayoutDashboard,
   Hospital,
   MessageSquareWarning,
-  User,
   LayoutList,
   Calendar,
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-
 const AdminSidebar = () => {
   const [selected, setSelected] = useState<string>("");
+
   const pathName = usePathname();
   const router = useRouter();
 
@@ -26,12 +25,6 @@ const AdminSidebar = () => {
     setSelected(routeName);
     router.push(`/admin/${routeName}`);
   };
-  if (
-    pathName.includes("/admin/login") ||
-    pathName.startsWith("/admin/register")
-  ) {
-    return null; // Hide the sidebar if the route matches
-  }
 
   return (
     <Sidebar>

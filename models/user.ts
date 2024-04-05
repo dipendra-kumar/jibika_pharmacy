@@ -1,15 +1,6 @@
 import { model, models, Schema } from "mongoose";
 import bcrypt from "bcrypt";
-
-export interface IUser {
-  profileImage: string;
-  fullName: string;
-  emailAddress: string;
-  password: string;
-  address: string;
-  phoneNumber: string;
-  isAdmin?: boolean;
-}
+import { IUser } from "@/@types";
 
 const UserSchema = new Schema<IUser>(
   {
@@ -29,7 +20,7 @@ const UserSchema = new Schema<IUser>(
         delete ret._id;
       },
     },
-  }
+  },
 );
 
 UserSchema.pre<IUser>("save", async function (next) {

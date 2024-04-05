@@ -1,28 +1,48 @@
 "use client";
-import { checkLogin } from "@/actions/auth";
+import React, { useEffect, useRef } from "react";
 import AdminSidebar from "@/components/AdminSidebar";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { redirect, usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { useAppDispatch } from "@/store/hooks";
+import { fetchUser } from "@/store/slices/authSlice";
+import AccessDenied from "@/components/AccessDenied";
+import Cookies from "js-cookie";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const dispatch = useAppDispatch<AppDispatch>();
+  const { authState, user } = useSelector((state: RootState) => state.auth);
 
-  const checkUser = async () => {
-    const session = await checkLogin();
-    if (!session) {
-      setIsLoggedIn(false);
-      return router.push("/admin/login");
-    }
-    setIsLoggedIn(true);
-  };
+  const pathName = usePathname();
+  const userRef = useRef(false);
+
   useEffect(() => {
-    checkUser();
-  }, [isLoggedIn]);
+    const session = Cookies.get("session");
+    if (session && userRef.current === false) {
+      dispatch(fetchUser());
+    }
+    return () => {
+      userRef.current = true;
+    };
+  }, []);
+
+  if (
+    pathName.includes("/admin/login") ||
+    pathName.startsWith("/admin/register")
+  ) {
+    if (authState && user?.isAdmin) {
+      return redirect("dashboard");
+    }
+    return <div>{children}</div>;
+  }
+
+  if (authState && !user?.isAdmin) {
+    return <AccessDenied />;
+  }
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
-      {isLoggedIn && <AdminSidebar />}
+      <AdminSidebar />
       {children}
     </div>
   );

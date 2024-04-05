@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { addDoctor } from "@/store/slices/doctorSlice";
 import DoctorForm from "./DoctorForm";
-import { IDoctorProfile } from "@/components/DoctorProfileCard";
+import { IDoctorProfile } from "@/@types";
 
 function AddDoctor() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { DefaultDoctor } from "@/assets";
-import { IDoctorProfile } from "@/components/DoctorProfileCard";
+import { IDoctorProfile } from "@/@types";
 
 const DoctorProfileCard: React.FC<IDoctorProfile> = ({
   profileImage,

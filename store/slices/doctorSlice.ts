@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { axiosClient } from "@/lib/axios";
-import { IDoctorProfile } from "@/components/DoctorProfileCard";
+import { IDoctorProfile } from "@/@types";
+import { axiosClient } from "../api/axios";
 
 interface IDoctors {
   loading: boolean;

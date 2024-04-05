@@ -1,5 +1,4 @@
 "use client";
-import { IDoctorProfile } from "@/components/DoctorProfileCard";
 import DoctorProfileCard from "./DoctorProfileCard";
 import React, { useState } from "react";
 import {
@@ -15,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { toast } from "@/components/ui/use-toast";
 import { deleteDoctor, updateDoctor } from "@/store/slices/doctorSlice";
+import { IDoctorProfile } from "@/@types";
 
 const Doctors = ({ allDoctors }: { allDoctors: IDoctorProfile[] }) => {
   const [selectedDoctor, setSelectedDoctor] = useState<number>(0);

@@ -4,7 +4,7 @@ import InputField from "@/components/InputField";
 import { UploadButton } from "@/utils/uploadthing";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { IDoctorProfile } from "@/components/DoctorProfileCard";
+import { IDoctorProfile } from "@/@types";
 
 interface DoctorFormProps {
   onSubmit: (data: IDoctorProfile) => Promise<void>;

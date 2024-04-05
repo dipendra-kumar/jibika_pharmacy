@@ -1,20 +1,17 @@
 "use client";
 
-import { checkLogin } from "@/actions/auth";
-import { useRouter } from "next/navigation";
+import { RootState } from "@/store/store";
+import { redirect } from "next/navigation";
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Page = () => {
-  const router = useRouter();
-  const loginCheck = async () => {
-    const isLoggedIn = await checkLogin();
-    if (isLoggedIn) {
-      router.push("/admin/dashboard");
-    }
-  };
+  const { authState } = useSelector((state: RootState) => state.auth);
   useEffect(() => {
-    loginCheck();
-  }, []);
+    if (authState) {
+      redirect("/admin/dashboard");
+    }
+  }, [authState]);
   return <div></div>;
 };
 
