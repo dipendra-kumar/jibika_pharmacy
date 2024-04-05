@@ -111,7 +111,7 @@ const Login: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center text-gray-600">
-            <span className="text-sm">Don't have an account? </span>
+            <span className="text-sm">Don&apos;t have an account? </span>
             <button
               className="bg-transparent font-medium text-indigo-600 hover:text-indigo-500"
               onClick={handleRegisterClick}
