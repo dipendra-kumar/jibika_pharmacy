@@ -4,13 +4,12 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "@/hoc";
 import { textVariant } from "@/utils/motion";
 import HeadTitle from "../../components/HeadTitle";
-import DoctorProfileCard, {
-  IDoctorProfile,
-} from "@/components/DoctorProfileCard";
+import DoctorProfileCard from "@/components/DoctorProfileCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import Loading from "@/components/Loading";
 import { fetchDoctors } from "@/store/slices/doctorSlice";
+import { IDoctorProfile } from "@/@types";
 
 const OurDoctors: React.FC = () => {
   const doctorRef = useRef(false);
