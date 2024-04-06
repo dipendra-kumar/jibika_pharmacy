@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Montserrat } from "next/font/google";
 import { main_section_img } from "@/assets";
 import { motion } from "framer-motion";
@@ -7,6 +7,9 @@ import Image from "next/image";
 import { fadeIn, zoomIn } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store/store";
+import { fetchDoctors } from "@/store/slices/doctorSlice";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -14,6 +17,14 @@ const montserrat = Montserrat({
   style: "normal",
 });
 const Hero = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const getDoctors = async () => {
+    await dispatch(fetchDoctors());
+  };
+  useEffect(() => {
+    getDoctors();
+  }, []);
   return (
     <div className="flex h-screen flex-col justify-between">
       <div className="relative flex h-full w-full items-center justify-center overflow-hidden">

@@ -40,7 +40,7 @@ const OurDoctors: React.FC = () => {
         </p>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-10 ">
-        {doctors &&
+        {doctors.length > 0 ? (
           doctors.map((doctor: IDoctorProfile, index: number) => (
             <DoctorProfileCard
               key={index}
@@ -52,7 +52,10 @@ const OurDoctors: React.FC = () => {
               workPlace={doctor.workPlace}
               extraAttributes={doctor.extraAttributes}
             />
-          ))}
+          ))
+        ) : (
+          <Loading className={"text-5xl text-black"} />
+        )}
       </div>
     </div>
   );
