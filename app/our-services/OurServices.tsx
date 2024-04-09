@@ -15,10 +15,6 @@ import {
 } from "@/assets";
 import Image, { StaticImageData } from "next/image";
 
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 import { fadeIn, textVariant } from "@/utils/motion";
 import { SectionWrapper } from "@/hoc";
 import HeadTitle from "../../components/HeadTitle";
@@ -41,13 +37,14 @@ const ServiceCard: React.FC<Service> = ({
   return (
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 1)}
-      className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] min-h-[425px] text-black"
+      className="block min-h-[425px] rounded-lg bg-white text-black shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
     >
-      <div className="relative overflow-hidden h-52">
-        <img
-          className="object-cover w-full h-full rounded-t-lg"
+      <div className="relative h-52 overflow-hidden">
+        <Image
+          className="h-full w-full rounded-t-lg object-cover"
           src={icon.src}
           alt={`${title}-service`}
+          fill
         />
       </div>
       <div className="p-6">
@@ -118,16 +115,16 @@ const OurServices = () => {
   ];
 
   return (
-    <div className="md:px-40 px-10 my-40">
-      <div className="w-full flex flex-col items-center justify-center p-5 lg:p-10">
+    <div className="my-40 px-10 md:px-40">
+      <div className="flex w-full flex-col items-center justify-center p-5 lg:p-10">
         <HeadTitle title="Our Services" subtitle="Health Care Solutions" />
-        <p className="text-center text-gray-700 text-lg md:text-xl mb-8">
+        <p className="mb-8 text-center text-lg text-gray-700 md:text-xl">
           At our health care center, we provide a wide range of services
           tailored to meet your medical needs. From diagnostic tests to advanced
           imaging procedures, our dedicated team is committed to ensuring your
           well-being and providing comprehensive care solutions.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:grid-cols-3 items-center justify-center">
+        <div className="grid grid-cols-1 items-center justify-center gap-10 md:grid-cols-3 lg:grid-cols-3">
           {serviceData.map((service, index) => (
             <ServiceCard
               index={index}

@@ -1,15 +1,15 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/hoc";
-import { textVariant } from "@/utils/motion";
+import { fadeIn } from "@/utils/motion";
 import HeadTitle from "../../components/HeadTitle";
 import DoctorProfileCard from "@/components/DoctorProfileCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import Loading from "@/components/Loading";
 import { fetchDoctors } from "@/store/slices/doctorSlice";
-import { IDoctorProfile } from "@/@types";
+import { IDoctors } from "@/types";
 
 const OurDoctors: React.FC = () => {
   const doctorRef = useRef(false);
@@ -26,7 +26,7 @@ const OurDoctors: React.FC = () => {
   }, [doctors]);
 
   return (
-    <div className="my-40 px-1 md:px-40">
+    <div className="my-40 px-1 md:px-28">
       <div className="flex w-full flex-col items-center justify-center gap-5 p-5 lg:px-10 ">
         <HeadTitle
           title="Meet Our Doctors"
@@ -39,24 +39,35 @@ const OurDoctors: React.FC = () => {
           well-being and satisfaction of every patient.
         </p>
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-10 ">
-        {doctors.length > 0 ? (
-          doctors.map((doctor: IDoctorProfile, index: number) => (
-            <DoctorProfileCard
-              key={index}
-              index={index}
-              profileImage={doctor.profileImage}
-              name={doctor.name}
-              qualification={doctor.qualification}
-              designation={doctor.designation}
-              workPlace={doctor.workPlace}
-              extraAttributes={doctor.extraAttributes}
-            />
-          ))
-        ) : (
-          <Loading className={"text-5xl text-black"} />
-        )}
-      </div>
+      {doctors.length > 0 ? (
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 ">
+          {doctors.map((doctor: IDoctors, index: number) => (
+            <motion.div
+              variants={fadeIn("up", "spring", 0.3 * index, 0.8)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+            >
+              <DoctorProfileCard
+                key={index}
+                index={index}
+                profileImage={doctor.profileImage}
+                name={doctor.name}
+                qualification={doctor.qualification}
+                designation={doctor.designation}
+                workPlace={doctor.workPlace}
+                extraAttributes={doctor.extraAttributes}
+              />
+            </motion.div>
+          ))}
+        </div>
+      ) : (
+        loading && (
+          <div className="flex h-full w-full items-center justify-center p-20">
+            <Loading className={"text-5xl text-black"} />
+          </div>
+        )
+      )}
     </div>
   );
 };

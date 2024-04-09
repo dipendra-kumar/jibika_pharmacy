@@ -4,12 +4,12 @@ import InputField from "@/components/InputField";
 import { UploadButton } from "@/utils/uploadthing";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import { IDoctorProfile } from "@/@types";
+import { IDoctors } from "@/types";
 
 interface DoctorFormProps {
-  onSubmit: (data: IDoctorProfile) => Promise<void>;
-  onDelete?: (data: IDoctorProfile) => Promise<void>;
-  initialData?: IDoctorProfile;
+  onSubmit: (data: IDoctors) => Promise<void>;
+  onDelete?: (data: IDoctors) => Promise<void>;
+  initialData?: IDoctors;
 }
 
 function DoctorForm({ onSubmit, initialData, onDelete }: DoctorFormProps) {
@@ -18,7 +18,7 @@ function DoctorForm({ onSubmit, initialData, onDelete }: DoctorFormProps) {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<IDoctorProfile>({ defaultValues: initialData });
+  } = useForm<IDoctors>({ defaultValues: initialData });
   const [profileImage, setProfileImage] = useState<string>(
     initialData?.profileImage || "",
   );
@@ -26,12 +26,12 @@ function DoctorForm({ onSubmit, initialData, onDelete }: DoctorFormProps) {
   useEffect(() => {
     if (initialData) {
       Object.entries(initialData).forEach(([key, value]) => {
-        setValue(key as keyof IDoctorProfile, value);
+        setValue(key as keyof IDoctors, value);
       });
     }
   }, [initialData, setValue]);
 
-  const submitHandler = (data: IDoctorProfile) => {
+  const submitHandler = (data: IDoctors) => {
     const formData = { ...data, profileImage };
     onSubmit(formData);
   };

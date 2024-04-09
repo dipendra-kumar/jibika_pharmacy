@@ -8,13 +8,19 @@ export interface IUser {
   isAdmin?: boolean;
 }
 
-export interface IDoctorProfile {
-  index: number;
+export interface IDoctors {
+  index?: number;
   profileImage?: string;
   name: string;
   designation: string;
   qualification: string;
   extraAttributes: string;
   workPlace?: string;
-  onSelect?: () => void;
+}
+
+export interface IService {
+  index?: number;
+  serviceImage?: string;
+  serviceName: string;
+  serviceDescription: string;
 }

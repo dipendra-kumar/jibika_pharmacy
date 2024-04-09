@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import AddDoctor from "./AddDoctor";
 import Doctors from "./Doctors";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { fetchDoctors } from "@/store/slices/doctorSlice";
-import FullLoading from "@/components/FullLoading";
+import Loading from "@/components/Loading";
+import PageHeader from "@/components/PageHeader";
 
 const Page = () => {
   const doctorRef = useRef(false);
@@ -21,18 +22,17 @@ const Page = () => {
     };
   }, [doctors]);
 
-  if (loading) {
-    return <FullLoading />;
-  }
-
   return (
-    <div className="h-screen w-full overflow-auto">
-      <div className="flex justify-between border-b bg-muted p-8 shadow-sm">
-        <h1 className="text-4xl font-extrabold">Doctors</h1>
-        <AddDoctor />
-      </div>
-      <div className="h-full w-full ">
-        {doctors && <Doctors allDoctors={doctors} />}
+    <div className="h-screen w-full ">
+      <PageHeader title="Doctors" contextAction={<AddDoctor />} />
+      <div className="flex h-full flex-col">
+        <div className="mb-28 flex-grow overflow-auto">
+          {doctors.length > 0 ? (
+            <Doctors allDoctors={doctors} />
+          ) : (
+            loading && <Loading className="text-5xl text-gray-800 " />
+          )}
+        </div>
       </div>
     </div>
   );

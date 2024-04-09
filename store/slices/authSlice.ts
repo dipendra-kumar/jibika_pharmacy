@@ -1,5 +1,5 @@
 // Import necessary dependencies and types
-import { IUser } from "@/@types";
+import { IUser } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   getUserInfoApi,

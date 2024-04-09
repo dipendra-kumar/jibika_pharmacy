@@ -1,6 +1,4 @@
-import { decrypt, logout } from "@/lib/lib";
-import userModel from "@/models/user";
-import connectMongo from "@/utils/connect-mongo";
+import { logout } from "@/lib/lib";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest, res: NextResponse) {

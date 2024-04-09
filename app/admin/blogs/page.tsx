@@ -5,7 +5,7 @@ import React from "react";
 const page = () => {
   return (
     <div className="h-screen w-full ">
-      <PageHeader title="Feedback" />
+      <PageHeader title="Blogs" />
       <UnderDevelopment />
     </div>
   );

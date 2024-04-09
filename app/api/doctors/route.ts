@@ -1,22 +1,40 @@
 import doctorModel from "@/models/doctors";
+import { Request } from "@/types/next";
 import connectMongo from "@/utils/connect-mongo";
 import { NextResponse } from "next/server";
+import { checkAdmin } from "../auth";
 
 export async function POST(request: Request) {
   try {
+    await checkAdmin(request.user?.emailAddress);
     await connectMongo();
     const {
       name,
-      emailAddress,
       qualification,
       designation,
       extraAttributes,
       workPlace,
       profileImage,
     } = await request.json();
+    if (
+      !name ||
+      !qualification ||
+      !designation ||
+      !workPlace ||
+      !profileImage
+    ) {
+      return NextResponse.json(
+        {
+          message: "Values required!",
+        },
+        {
+          status: 400,
+        },
+      );
+    }
+
     const newDoctor = new doctorModel({
       name,
-      emailAddress,
       qualification,
       designation,
       extraAttributes,
@@ -46,6 +64,7 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     await connectMongo();
+    await checkAdmin(request.user?.emailAddress);
     const data = await request.json();
     const doctor = await doctorModel.findById(data._id);
 
@@ -86,6 +105,7 @@ export async function PUT(request: Request) {
 export async function DELETE(request: Request) {
   try {
     await connectMongo();
+    await checkAdmin(request.user?.emailAddress);
     const url = new URL(request.url);
     const _id = url.searchParams.get("_id");
     const doctor = await doctorModel.findById(_id);

@@ -1,6 +1,7 @@
+import { Request } from "@/types/next";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 const secretKey = "secret";
 const key = new TextEncoder().encode(secretKey);
 
@@ -30,7 +31,7 @@ export async function getSession() {
   return await decrypt(session);
 }
 
-export async function updateSession(request: NextRequest) {
+export async function updateSession(request: Request) {
   const session = request.cookies.get("session")?.value;
   if (!session) {
     const loginUrl = new URL("/admin/login", request.nextUrl.origin);
@@ -39,6 +40,7 @@ export async function updateSession(request: NextRequest) {
 
   const parsed = await decrypt(session);
   parsed.expires = new Date(Date.now() + 30 * 60 * 1000);
+  request.user = parsed;
   const res = NextResponse.next();
   res.cookies.set({
     name: "session",

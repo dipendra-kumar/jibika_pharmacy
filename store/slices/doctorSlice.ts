@@ -1,14 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { IDoctorProfile } from "@/@types";
-import { axiosClient } from "../api/axios";
 
-interface IDoctors {
+import { axiosClient } from "../api/axios";
+import { IDoctors } from "@/types";
+
+interface IDoctorsProfile {
   loading: boolean;
-  data: IDoctorProfile[];
+  data: IDoctors[];
   errors: any;
 }
 
-const initialState: IDoctors = {
+const initialState: IDoctorsProfile = {
   loading: false,
   data: [],
   errors: null,
@@ -24,7 +25,7 @@ export const fetchDoctors = createAsyncThunk(
 
 export const addDoctor = createAsyncThunk(
   "addDoctor",
-  async (data: IDoctorProfile, thunkApi) => {
+  async (data: IDoctors, thunkApi) => {
     const response = (await axiosClient.post("/doctors", data)).data;
     return response.message;
   },
@@ -32,14 +33,14 @@ export const addDoctor = createAsyncThunk(
 
 export const updateDoctor = createAsyncThunk(
   "updateDoctor",
-  async (data: IDoctorProfile, thunkApi) => {
+  async (data: IDoctors, thunkApi) => {
     const response = (await axiosClient.put("/doctors", data)).data;
     return response.message;
   },
 );
 export const deleteDoctor = createAsyncThunk(
   "deleteDoctor",
-  async (doctorID: IDoctorProfile, thunkApi) => {
+  async (doctorID: IDoctors, thunkApi) => {
     const response = (await axiosClient.delete(`/doctors/?_id=${doctorID}`))
       .data;
     return response.message;

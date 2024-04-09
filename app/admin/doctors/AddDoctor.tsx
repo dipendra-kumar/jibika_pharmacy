@@ -15,13 +15,13 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { addDoctor } from "@/store/slices/doctorSlice";
 import DoctorForm from "./DoctorForm";
-import { IDoctorProfile } from "@/@types";
+import { IDoctors } from "@/types";
 
 function AddDoctor() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleFormSubmit = async (data: IDoctorProfile) => {
+  const handleFormSubmit = async (data: IDoctors) => {
     try {
       await dispatch(addDoctor(data));
       toast({

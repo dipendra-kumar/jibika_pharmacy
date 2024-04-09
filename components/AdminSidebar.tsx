@@ -7,6 +7,7 @@ import {
   MessageSquareWarning,
   LayoutList,
   Calendar,
+  Newspaper,
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 const AdminSidebar = () => {
@@ -48,13 +49,19 @@ const AdminSidebar = () => {
         onItemClick={() => handleSelected("services")}
       />
       <SidebarItem
+        text="Blogs"
+        icon={<Newspaper />}
+        active={selected === "blogs"}
+        onItemClick={() => handleSelected("blogs")}
+      />
+      <SidebarItem
         text="Appointments"
         icon={<Calendar />}
         active={selected === "appointments"}
         onItemClick={() => handleSelected("appointments")}
       />
       <SidebarItem
-        text="Feedback"
+        text="Feedbacks"
         icon={<MessageSquareWarning />}
         active={selected === "feedback"}
         onItemClick={() => handleSelected("feedback")}

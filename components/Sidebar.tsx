@@ -96,7 +96,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                     Change Password
                   </DropdownMenuItem>
                   <Button
-                    className="flex w-full cursor-pointer items-center justify-center bg-red-600 p-3 text-center text-white hover:bg-red-700 "
+                    className="flex w-full cursor-pointer items-center justify-center bg-white p-3 text-center text-gray-800 hover:bg-red-700 hover:text-white "
                     onClick={handleLogout}
                   >
                     {isLoading ? (

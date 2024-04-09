@@ -1,27 +1,27 @@
-"use client";
-import DoctorProfileCard from "./DoctorProfileCard";
+import DoctorProfileCard from "../../../components/DoctorProfileCard";
 import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import DoctorForm from "./DoctorForm";
 import { useDispatch } from "react-redux";
+import { updateDoctor, deleteDoctor } from "@/store/slices/doctorSlice";
+import { useToast } from "@/components/ui/use-toast";
+import { IDoctors } from "@/types";
 import { AppDispatch } from "@/store/store";
-import { toast } from "@/components/ui/use-toast";
-import { deleteDoctor, updateDoctor } from "@/store/slices/doctorSlice";
-import { IDoctorProfile } from "@/@types";
 
-const Doctors = ({ allDoctors }: { allDoctors: IDoctorProfile[] }) => {
+const Doctors = ({ allDoctors }: { allDoctors: IDoctors[] }) => {
   const [selectedDoctor, setSelectedDoctor] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleFormSubmit = async (data: IDoctorProfile) => {
+  const { toast } = useToast();
+
+  const handleFormSubmit = async (data: IDoctors) => {
     try {
       await dispatch(updateDoctor(data));
       toast({
@@ -50,16 +50,19 @@ const Doctors = ({ allDoctors }: { allDoctors: IDoctorProfile[] }) => {
       });
     }
   };
+
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <div className="h-screen w-full">
         <div className="flex flex-wrap items-center justify-center gap-8 overflow-auto p-10">
-          {allDoctors.map((doctor: IDoctorProfile, index: number) => (
+          {allDoctors.map((doctor: IDoctors, index: number) => (
             <div
               key={index}
               onClick={() => {
                 setSelectedDoctor(index);
+                setIsModalOpen(true);
               }}
+              className="cursor-pointer duration-200 hover:scale-105 hover:shadow-lg"
             >
               <DialogTrigger>
                 <DoctorProfileCard
@@ -77,16 +80,13 @@ const Doctors = ({ allDoctors }: { allDoctors: IDoctorProfile[] }) => {
         </div>
       </div>
       <DialogContent
-        className=" sm:max-w-[425px]"
+        className="sm:max-w-[425px]"
         onInteractOutside={(e) => {
           e.preventDefault();
         }}
       >
         <DialogHeader>
           <DialogTitle>Edit Doctor</DialogTitle>
-          <DialogDescription>
-            Enter the details for the doctor
-          </DialogDescription>
         </DialogHeader>
         <DoctorForm
           onSubmit={handleFormSubmit}
