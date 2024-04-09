@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { DefaultDoctor } from "@/assets";
-import { IDoctorProfile } from "@/types";
+import { IDoctors } from "@/types";
 
-const DoctorProfileCard: React.FC<IDoctorProfile> = ({
+const DoctorProfileCard: React.FC<IDoctors> = ({
   profileImage,
   name,
   designation,

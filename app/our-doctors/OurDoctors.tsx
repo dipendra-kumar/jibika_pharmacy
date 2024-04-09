@@ -43,13 +43,13 @@ const OurDoctors: React.FC = () => {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 ">
           {doctors.map((doctor: IDoctors, index: number) => (
             <motion.div
+              key={index}
               variants={fadeIn("up", "spring", 0.3 * index, 0.8)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.25 }}
             >
               <DoctorProfileCard
-                key={index}
                 index={index}
                 profileImage={doctor.profileImage}
                 name={doctor.name}
