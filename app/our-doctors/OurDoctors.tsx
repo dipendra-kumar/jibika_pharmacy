@@ -40,7 +40,7 @@ const OurDoctors: React.FC = () => {
         </p>
       </div>
       {doctors.length > 0 ? (
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 ">
+        <div className="flex flex-wrap items-center justify-center gap-10 ">
           {doctors.map((doctor: IDoctors, index: number) => (
             <motion.div
               key={index}

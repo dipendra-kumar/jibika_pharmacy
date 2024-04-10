@@ -12,7 +12,7 @@ const DoctorProfileCard: React.FC<IDoctors> = ({
 }) => {
   return (
     <div className="flex max-h-[480px] min-h-[480px] min-w-[350px] flex-col  overflow-hidden  rounded-md border bg-white shadow-md  ">
-      <div className="group relative flex h-full w-[350px] flex-col">
+      <div className="group relative flex h-full w-full flex-col">
         <Image
           className="h-80 w-full object-cover "
           src={profileImage ? profileImage : DefaultDoctor}
