@@ -83,11 +83,11 @@ const Header = () => {
   return (
     <div>
       <motion.div
-        className={` w-full pl-10 ${
+        className={` w-full pl-3 lg:pl-10 ${
           isFixed ? "fixed top-0 " : " absolute "
-        }  z-50 flex h-28 w-full cursor-default items-center justify-center bg-white shadow-lg transition-all duration-300`}
+        }  z-50 flex h-28 w-full cursor-default items-center  justify-center bg-white shadow-lg transition-all duration-300`}
       >
-        <div className="relative flex w-[99%]  items-center justify-end">
+        <div className="relative flex w-full items-center  justify-end lg:w-[99%]">
           <Link
             href=""
             className="shadow-neumorphism absolute -left-1 flex items-center justify-center gap-3 rounded-xl "
