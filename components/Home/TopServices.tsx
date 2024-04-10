@@ -32,16 +32,16 @@ const HomeServiceCard: React.FC<Service> = ({
   return (
     <motion.div
       variants={fadeIn("up", "spring", index * 0.5, 1)}
-      className="block rounded-lg bg-muted shadow-sm min-h-[325px] min-w-[200px] text-black"
+      className="block min-h-[325px] min-w-[200px] rounded-lg bg-muted text-black shadow-sm"
     >
-      <div className="flex items-center justify-center h-52 text-secondary">
+      <div className="flex h-52 items-center justify-center text-secondary">
         {icon}
       </div>
       <div className="p-6">
         <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800">
           {title}
         </h5>
-        <p className="text-base text-neutral-600 mb-4">{description}</p>
+        <p className="mb-4 text-base text-neutral-600">{description}</p>
       </div>
     </motion.div>
   );
@@ -93,22 +93,22 @@ const TopServices: React.FC = () => {
   };
 
   return (
-    <div className="px-10 md:px-40 my-40">
-      <div className="w-full  flex flex-col items-center justify-center p-5 lg:p-10">
+    <div className="my-20 px-10 md:px-40">
+      <div className="flex  w-full flex-col items-center justify-center p-5 lg:p-10">
         <HeadTitle
           title="Our Services"
           subtitle="Health Care Solutions We Provide"
         />
         <motion.p
           variants={textVariant()}
-          className="text-center text-gray-600 mb-8 text-lg lg:text-xl "
+          className="mb-8 text-center text-lg text-gray-600 lg:text-xl "
         >
           At our health center, we offer a wide variety of services aimed at
           providing comprehensive care and promoting wellness. From advanced
           diagnostics to personalized treatments, our team is dedicated to
           ensuring your health and well-being.
         </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3 items-center justify-center mt-10">
+        <div className="mt-10 grid grid-cols-1 items-center justify-center gap-10 md:grid-cols-2 lg:grid-cols-3">
           {serviceData.map((service, index) => (
             <HomeServiceCard
               index={index}
@@ -121,7 +121,7 @@ const TopServices: React.FC = () => {
         </div>
         <motion.button
           variants={textVariant()}
-          className="mt-8 bg-primary hover:bg-secondary duration-300 text-white font-bold py-4 px-5 text-lg rounded"
+          className="mt-8 rounded bg-primary px-5 py-4 text-lg font-bold text-white duration-300 hover:bg-secondary"
           onClick={handleOnClick}
         >
           Explore All Services

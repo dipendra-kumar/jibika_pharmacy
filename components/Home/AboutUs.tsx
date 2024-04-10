@@ -26,23 +26,27 @@ const Card: React.FC<CardProps> = ({ icon, color, title, index }) => {
       style={{ backgroundColor: color }}
     >
       {icon}
-      <p className="text-lg font-semibold mt-2">{title}</p>
+      <p className="mt-2 text-lg font-semibold">{title}</p>
     </motion.div>
   );
 };
 
 const AboutUs = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between p-5 lg:p-10 relative z-10 my-20">
-      <HeadTitle
-        title="Welcome to"
-        subtitle="Jibika Pharmacy & Health Clinic"
-      />
+    <div className="relative z-10 my-10 flex h-full w-full flex-col items-center justify-between p-5 lg:p-10">
+      <HeadTitle title="Welcome to" subtitle="" />
+      <h1
+        className={`mb-5 text-center text-4xl font-extrabold tracking-normal text-[#062d71] drop-shadow-2xl  md:text-left md:tracking-wider`}
+      >
+        Jibika Pharmacy
+        <span className="  text-green-600">&nbsp;&</span>
+        &nbsp;Health Clinic
+      </h1>
 
-      <div className="w-full md:w-3/4 max-w-4xl ">
+      <div className="w-full max-w-4xl md:w-3/4 ">
         <motion.p
           variants={textVariant()}
-          className="text-lg lg:text-xl text-center mb-8 h-full flex items-center justify-center"
+          className="mb-8 flex h-full items-center justify-center text-center text-lg lg:text-xl"
         >
           Jibika Pharmacy and Health Clinic is your trusted partner in health,
           providing comprehensive pharmaceutical services and personalized care.
@@ -52,16 +56,16 @@ const AboutUs = () => {
         </motion.p>
       </div>
 
-      <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
         <Card
-          icon={<FaHeart className="text-4xl mb-2 animate-pulse" />}
+          icon={<FaHeart className="mb-2 animate-pulse text-4xl" />}
           color="rgb(232 82 79)"
           title="Personalized Care"
           index={0}
         />
 
         <Card
-          icon={<FaUserMd className="text-4xl mb-2" />}
+          icon={<FaUserMd className="mb-2 text-4xl" />}
           color="rgb(100 172 244)"
           title="Experienced Team"
           index={1}
@@ -69,7 +73,7 @@ const AboutUs = () => {
 
         <Card
           icon={
-            <FaHandHoldingMedical className="text-4xl mb-2 animate-bounce" />
+            <FaHandHoldingMedical className="mb-2 animate-bounce text-4xl" />
           }
           color="rgb(84 186 84)"
           title="Holistic Wellness"

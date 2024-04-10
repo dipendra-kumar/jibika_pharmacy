@@ -1,5 +1,7 @@
 import PharmaLogo from "./pharmacy_logo.jpg";
-import main_section_img from "./bg_img.jpg";
+import crousel_img_1 from "./crousel_img_1.jpg";
+import crousel_img_2 from "./crousel_img_2.jpg";
+import crousel_img_3 from "./crousel_img_3.jpg";
 import xRayImg from "./x-ray.jpg";
 import labImg from "./lab_img.jpg";
 import USGImg from "./ultrasound.jpg";
@@ -24,7 +26,9 @@ import DrSureshMaharjan from "./Dr_SureshMaharjan.jpeg";
 import HomeSampleCollection from "./Home-Collection-Service-Alokamedicare.jpg";
 export {
   PharmaLogo,
-  main_section_img,
+  crousel_img_1,
+  crousel_img_2,
+  crousel_img_3,
   USGImg,
   labImg,
   xRayImg,

@@ -47,6 +47,9 @@ module.exports = withUt({
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        boxShadow: {
+          neumorphism: "5px 5px 15px #c4c4c4, -5px -5px 15px #ffffff",
+        },
       },
       borderRadius: {
         lg: `var(--radius)`,

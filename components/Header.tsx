@@ -30,7 +30,7 @@ const HeaderLink = ({
   return (
     <Link
       href={linkTo === "home" ? "/" : linkTo}
-      className={`duration-300 hover:text-green-500 ${
+      className={`  duration-300 hover:text-green-500  ${
         currentPath === linkTo ? "font-bold text-green-500" : ""
       }`}
       onClick={onClick}
@@ -83,18 +83,18 @@ const Header = () => {
   return (
     <div>
       <motion.div
-        className={` ${
-          isFixed ? "fixed top-0 " : " absolute bg-opacity-90 "
+        className={` w-full pl-10 ${
+          isFixed ? "fixed top-0 " : " absolute "
         }  z-50 flex h-28 w-full cursor-default items-center justify-center bg-white shadow-lg transition-all duration-300`}
       >
-        <div className="relative flex w-[90%] items-center justify-end">
+        <div className="relative flex w-[99%]  items-center justify-end">
           <Link
             href=""
-            className="absolute -left-1 flex items-center justify-center  gap-3 "
+            className="shadow-neumorphism absolute -left-1 flex items-center justify-center gap-3 rounded-xl "
           >
-            <div className="flex items-center justify-center p-2">
+            <div className="shadow-neumorphism flex items-center justify-center rounded-full  bg-white ">
               <Image
-                className="h-24 w-24 rounded-full shadow-2xl md:shadow-none  "
+                className="h-28 w-28 rounded-full "
                 src={PharmaLogo}
                 alt="pharmacy_logo"
                 width={200}
@@ -103,7 +103,7 @@ const Header = () => {
             </div>
             <div className="flex flex-col items-center justify-center">
               <h1
-                className={`text-center text-2xl font-extrabold tracking-normal text-[#062d71] drop-shadow-2xl md:text-left md:text-3xl md:tracking-wider`}
+                className={`text-center text-2xl font-extrabold tracking-normal text-[#062d71] drop-shadow-2xl md:text-left  md:tracking-wider`}
               >
                 Jibika Pharmacy <br />
               </h1>
